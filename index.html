@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Norbert Szpak – Kontakt</title>
+<title>Herzintelligenz – lebendige Zufallsanimationen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
@@ -50,8 +50,7 @@ h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: i
   box-shadow: 0 18px 50px rgba(20,4,40,.45);
 }
 .lines { display: flex; flex-direction: column; gap: 0; text-align: center; line-height: 1.5; font-size: .95rem; }
-.street { color: var(--sand); font-weight: 500; }
-.city { color: var(--muted); }
+.street, .city { color: var(--sand); font-weight: 500; }
 .row { display: grid; grid-template-columns: minmax(0, 1fr); gap: .55rem; }
 .btn {
   font: inherit; font-weight: 800; font-size: clamp(.82rem, 3.4vw, .92rem);
@@ -90,7 +89,7 @@ h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: i
 </address>
 
 <script>
-const APP_VERSION = 16;
+const APP_VERSION = 17;
 
 (function () {
   const cv = document.getElementById('c');
@@ -99,6 +98,7 @@ const APP_VERSION = 16;
   const FONT = '"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif';
   let W = 0, H = 0, dpr = 1, T = 0, frame = 0;
   let parts = [], dust = [], fx = [], rings = [], orbit = [];
+  let introGlow = 0, wordY = 0, nameY = 0, wordSize = 24, nameSize = 36, textFlash = 0;
   const BEAT = 2.1;            // Sekunden pro Herzschlag (ca. 29 Schläge/Min), ruhige Pause zwischen den Doppelschlägen
   let lastPh = 0;
   const ptr = { x: -9999, y: -9999, active: false };
@@ -137,12 +137,16 @@ const APP_VERSION = 16;
     const R = Math.max(240, document.getElementById('card').getBoundingClientRect().top - 12);
     heart.s = Math.max(36, Math.min(72, Math.min(W, H) * 0.1));
     heart.bx = W / 2;
-    heart.by = Math.max(R * 0.13, heart.s * 1.3 + 14);
-    const wordFs = Math.min(fitFont(o, word, W * 0.84), H * 0.07);
-    const wy = Math.max(R * 0.30, heart.by + heart.s * 1.35 + wordFs * 0.7);
-    const nameFs = Math.min(fitFont(o, 'Norbert', W * 0.8), H * 0.1, Math.max(36, (R - wy) * 0.34));
-    let ny = Math.max(wy + wordFs * 0.6 + nameFs * 1.3 + 20, R * 0.66);
+    heart.by = Math.max(R * 0.11, heart.s * 1.3 + 14);
+    const wordFs = Math.min(fitFont(o, word, W * 0.92), H * 0.085);
+    wordSize = wordFs;
+    // Anordnung wie in der Vorlage: Herz oben, Titel darunter, Name mit großzügigem Abstand.
+    const wy = Math.max(R * 0.30, heart.by + heart.s * 1.5 + wordFs * 0.75, wordFs * 0.8 + 24);
+    const nameFs = Math.min(fitFont(o, 'Norbert', W * 0.8), H * 0.13, Math.max(36, (R - wy) * 0.29));
+    let ny = Math.max(wy + wordFs * 0.6 + nameFs * 1.6 + 20, R * 0.62);
+    nameSize = nameFs;
     ny = Math.min(ny, R - 8 - nameFs * 1.3);
+    wordY = wy; nameY = ny;
     o.font = '800 ' + wordFs + 'px ' + FONT;
     o.fillText(word, W / 2, wy);
     o.font = '800 ' + nameFs + 'px ' + FONT;
@@ -194,7 +198,9 @@ const APP_VERSION = 16;
   }
 
   function tapHeart() {
-    heart.beatV = 0.09;
+    heart.beatV = 0.16;
+    // Drei leuchtende Wellen beim Antippen
+    for (let i = 0; i < 5; i++) rings.push({ r: heart.s * 0.45, max: Math.max(W, H) * 0.62, d: i * 5, a: 0.95 });
     for (let i = 0; i < 34; i++) {
       const a = Math.random() * 6.283, v = 1.5 + Math.random() * 5;
       spawnHeart(heart.x, heart.y, Math.cos(a) * v, Math.sin(a) * v - 1.2, 4 + Math.random() * 9, 70 + Math.random() * 60);
@@ -205,6 +211,47 @@ const APP_VERSION = 16;
     }
     for (let i = 0; i < 3; i++) rings.push({ r: heart.s * 0.6, max: Math.max(W, H) * 0.45, d: i * 8 });
     burst(heart.x, heart.y, 0.55);
+  }
+
+  function titleMagic(x, y) {
+    // Animation 2: Eine leuchtende Welle läuft durch HERZINTELLIGENZ.
+    textFlash = 1.25;
+    for (const p of parts) {
+      if (Math.abs(p.ty - wordY) < wordSize * 1.1) {
+        const dx = p.tx - x;
+        const wave = Math.sin(dx * 0.055) * 7;
+        p.vy -= wave * 0.45;
+        p.vx += Math.sign(dx || 1) * (2 + Math.random() * 3);
+      }
+    }
+    for (let i = 0; i < 100; i++) {
+      const px = Math.random() * W;
+      const py = wordY + (Math.random() - .5) * wordSize * 1.8;
+      fx.push({ t: 'p', x: px, y: py, vx: (Math.random() - .5) * 1.4, vy: -1.5 - Math.random() * 3.5, s: 1 + Math.random() * 2.5, life: 35 + Math.random() * 45, max: 80, c: ROSE[(Math.random() * ROSE.length) | 0] });
+    }
+  }
+
+  function nameMagic(x, y) {
+    // Animation 3: Der Name explodiert in Herzen und Lichtpunkte und setzt sich wieder zusammen.
+    textFlash = 1.5;
+    for (const p of parts) {
+      if (Math.abs(p.ty - nameY) < nameSize * 1.4) {
+        const dx = p.x - x, dy = p.y - y;
+        const d = Math.sqrt(dx * dx + dy * dy) || 1;
+        const power = 12 + Math.random() * 15;
+        p.vx += dx / d * power + (Math.random() - .5) * 8;
+        p.vy += dy / d * power + (Math.random() - .5) * 8;
+      }
+    }
+    for (let i = 0; i < 42; i++) {
+      const a = Math.random() * 6.283, v = 2 + Math.random() * 6;
+      spawnHeart(x, y, Math.cos(a) * v, Math.sin(a) * v - 1.2, 4 + Math.random() * 7, 65 + Math.random() * 65);
+    }
+    for (let i = 0; i < 70; i++) {
+      const a = Math.random() * 6.283, v = 1.5 + Math.random() * 7;
+      fx.push({ t: 'p', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, s: 1 + Math.random() * 2.8, life: 40 + Math.random() * 55, max: 95, c: ROSE[(Math.random() * ROSE.length) | 0] });
+    }
+    for (let i = 0; i < 4; i++) rings.push({ r: 8, max: Math.max(W, H) * 0.42, d: i * 7, a: 0.9 });
   }
 
   function burst(x, y, power) {
@@ -219,12 +266,14 @@ const APP_VERSION = 16;
 
   function step() {
     T += 1 / 60; frame++;
+    introGlow = Math.min(1, introGlow + 0.004);
+    textFlash *= 0.94;
     updateHeart();
     const ph = (T % BEAT) / BEAT;
     heart.pulse = Math.exp(-Math.pow((ph - 0.025) / 0.032, 2)) + 0.65 * Math.exp(-Math.pow((ph - 0.32) / 0.036, 2));
     lastPh = ph;
     heart.beat += heart.beatV; heart.beatV += -heart.beat * 0.22; heart.beatV *= 0.82;
-    if (frame % 170 === 0) spawnHeart(heart.x + (Math.random() - .5) * heart.s, heart.y + heart.s * 0.2, (Math.random() - .5) * 0.4, -0.5 - Math.random() * 0.4, 3 + Math.random() * 4, 150);
+    if (frame % 105 === 0) spawnHeart(heart.x + (Math.random() - .5) * heart.s * 1.8, heart.y + heart.s * 0.35, (Math.random() - .5) * 0.55, -0.7 - Math.random() * 0.65, 3 + Math.random() * 5, 150 + Math.random() * 70);
     const R = Math.max(70, Math.min(W, H) * 0.12);
     for (const p of parts) {
       let fx_ = (p.tx - p.x) * p.k, fy_ = (p.ty - p.y) * p.k;
@@ -256,8 +305,8 @@ const APP_VERSION = 16;
   function drawHeart() {
     const sc = 1 + heart.pulse * 0.10 + heart.beat;
     const hr = heart.s * (3.2 + heart.pulse * 1.6);
-    const halo = ctx.createRadialGradient(heart.x, heart.y, 0, heart.x, heart.y, hr);
-    halo.addColorStop(0, 'rgba(255,79,160,' + (0.16 + heart.pulse * 0.22).toFixed(3) + ')');
+    const halo = ctx.createRadialGradient(heart.x, heart.y, 0, heart.x, heart.y, hr * (1 + 0.12 * Math.sin(T * 1.7))); 
+    halo.addColorStop(0, 'rgba(255,105,190,' + (0.20 + heart.pulse * 0.30 + introGlow * 0.08).toFixed(3) + ')');
     halo.addColorStop(1, 'rgba(255,79,160,0)');
     ctx.fillStyle = halo;
     ctx.fillRect(heart.x - hr, heart.y - hr, hr * 2, hr * 2);
@@ -270,8 +319,13 @@ const APP_VERSION = 16;
       ctx.beginPath(); ctx.arc(x, y, o.r, 0, 6.2832); ctx.fill();
     }
     ctx.globalAlpha = 1;
+    // Feiner Lichtkranz um das Herz
     ctx.save();
-    ctx.shadowColor = 'rgba(224,21,127,0.85)'; ctx.shadowBlur = 30 + heart.pulse * 60 + heart.beat * 200;
+    ctx.beginPath(); ctx.arc(heart.x, heart.y, heart.s * (1.65 + 0.08 * Math.sin(T * 2)), 0, 6.2832);
+    ctx.strokeStyle = 'rgba(255,190,230,' + (0.18 + heart.pulse * 0.18) + ')'; ctx.lineWidth = 1.4; ctx.stroke();
+    ctx.restore();
+    ctx.save();
+    ctx.shadowColor = 'rgba(224,21,127,0.95)'; ctx.shadowBlur = 30 + heart.pulse * 60 + heart.beat * 200;
     const g = ctx.createLinearGradient(heart.x - s, heart.y - s, heart.x + s * 0.8, heart.y + s);
     g.addColorStop(0, '#ff8cc6'); g.addColorStop(0.5, '#e0157f'); g.addColorStop(1, '#a0106a');
     ctx.fillStyle = g;
@@ -287,14 +341,27 @@ const APP_VERSION = 16;
   function draw() {
     ctx.clearRect(0, 0, W, H);
     ctx.fillStyle = '#f3d9f7';
-    for (const d of dust) { ctx.globalAlpha = d.a; ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.2832); ctx.fill(); }
+    for (const d of dust) {
+      ctx.globalAlpha = d.a * (0.65 + 0.35 * Math.sin(T * 1.8 + d.x * 0.02));
+      ctx.beginPath(); ctx.arc(d.x, d.y, d.r * (0.85 + 0.25 * Math.sin(T * 2 + d.y)), 0, 6.2832); ctx.fill();
+      if (d.r > 1.45) { ctx.globalAlpha = d.a * 0.18; ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(d.x - d.vx * 9, d.y - d.vy * 9); ctx.strokeStyle = '#ffb5df'; ctx.lineWidth = 1; ctx.stroke(); }
+    }
     ctx.globalAlpha = 1;
-    for (const p of parts) { ctx.fillStyle = p.c; ctx.fillRect(p.x - p.s / 2, p.y - p.s / 2, p.s, p.s); }
+    if (textFlash > 0.02) {
+      const glow = ctx.createRadialGradient(W / 2, (wordY + nameY) / 2, 0, W / 2, (wordY + nameY) / 2, W * 0.55);
+      glow.addColorStop(0, 'rgba(255,105,190,' + (textFlash * 0.16) + ')');
+      glow.addColorStop(1, 'rgba(255,79,160,0)');
+      ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+    }
+    for (const p of parts) { ctx.fillStyle = p.c; ctx.shadowColor = textFlash > 0.1 ? '#ffb5df' : 'transparent'; ctx.shadowBlur = textFlash * 9; ctx.fillRect(p.x - p.s / 2, p.y - p.s / 2, p.s, p.s); }
+    ctx.shadowBlur = 0;
     for (const r of rings) {
       if (r.d > 0) continue;
       ctx.globalAlpha = Math.max(0, 1 - r.r / r.max) * 0.7 * (r.a || 1);
-      ctx.strokeStyle = '#ff7eb6'; ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ff9bd0'; ctx.lineWidth = 2.2;
+      ctx.shadowColor = '#ff4fa0'; ctx.shadowBlur = 12;
       ctx.beginPath(); ctx.arc(heart.x, heart.y, r.r, 0, 6.2832); ctx.stroke();
+      ctx.shadowBlur = 0;
     }
     drawHeart();
     for (const f of fx) {
@@ -306,6 +373,118 @@ const APP_VERSION = 16;
     ctx.globalAlpha = 1;
   }
 
+
+  // Zufallsanimationen: vier Bereiche, mehrere Effekte pro Bereich.
+  // Derselbe Effekt wird innerhalb eines Bereichs nie direkt zweimal gewählt.
+  const lastVariant = { heart: -1, title: -1, name: -1, scene: -1 };
+  let autoTimer = 0;
+  function pickVariant(key, count) {
+    let n = Math.floor(Math.random() * count);
+    if (count > 1 && n === lastVariant[key]) n = (n + 1 + Math.floor(Math.random() * (count - 1))) % count;
+    lastVariant[key] = n;
+    return n;
+  }
+  function sparkleBurst(x, y, amount = 90, speed = 5) {
+    for (let i = 0; i < amount; i++) {
+      const a = Math.random() * Math.PI * 2, v = 0.7 + Math.random() * speed;
+      const isHeart = Math.random() < 0.22;
+      if (isHeart) spawnHeart(x, y, Math.cos(a) * v, Math.sin(a) * v, 3 + Math.random() * 7, 65 + Math.random() * 65);
+      else fx.push({ t: 'p', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, s: 0.8 + Math.random() * 2.8, life: 35 + Math.random() * 65, max: 100, c: ROSE[(Math.random() * ROSE.length) | 0] });
+    }
+  }
+  function randomHeart() {
+    const v = pickVariant('heart', 4);
+    if (v === 0) { tapHeart(); }
+    else if (v === 1) {
+      heart.beatV = 0.32;
+      for (let i = 0; i < 7; i++) rings.push({ r: heart.s * 0.25, max: Math.max(W,H) * 0.7, d: i * 6, a: 0.8 });
+      sparkleBurst(heart.x, heart.y, 110, 6);
+    } else if (v === 2) {
+      for (let i = 0; i < 42; i++) {
+        const a = i / 42 * Math.PI * 2, v2 = 1.5 + Math.random() * 2.5;
+        spawnHeart(heart.x + Math.cos(a) * heart.s * 0.5, heart.y + Math.sin(a) * heart.s * 0.5,
+          Math.cos(a) * v2, Math.sin(a) * v2 - 1.3, 4 + Math.random() * 6, 90 + Math.random() * 50);
+      }
+      heart.beatV = 0.23;
+    } else {
+      heart.beatV = 0.28;
+      for (let i = 0; i < 4; i++) rings.push({ r: heart.s * (0.4 + i * 0.12), max: Math.max(W,H) * 0.58, d: i * 9, a: 0.95 });
+      sparkleBurst(heart.x, heart.y, 65, 7);
+    }
+  }
+  function randomTitle() {
+    const v = pickVariant('title', 4);
+    if (v === 0) titleMagic(W / 2, wordY);
+    else if (v === 1) {
+      textFlash = 1.7;
+      for (const p of parts) if (Math.abs(p.ty - wordY) < wordSize * 1.1) {
+        p.vy -= 5 + Math.random() * 9; p.vx += (Math.random() - .5) * 10;
+      }
+      sparkleBurst(W / 2, wordY, 125, 5);
+    } else if (v === 2) {
+      textFlash = 1.5;
+      for (const p of parts) if (Math.abs(p.ty - wordY) < wordSize * 1.1) {
+        p.vx += (Math.random() - .5) * 18; p.vy += (Math.random() - .5) * 12;
+      }
+      for (let i = 0; i < 5; i++) rings.push({ r: 10, max: W * 0.65, d: i * 10, a: 0.65 });
+      sparkleBurst(W / 2, wordY, 80, 4);
+    } else {
+      textFlash = 1.8;
+      for (const p of parts) if (Math.abs(p.ty - wordY) < wordSize * 1.1) {
+        p.vx += Math.sin(p.tx * 0.08) * 7; p.vy -= 2 + Math.random() * 5;
+      }
+      sparkleBurst(W / 2, wordY, 150, 3.5);
+    }
+  }
+  function randomName() {
+    const v = pickVariant('name', 4);
+    if (v === 0) nameMagic(W / 2, nameY);
+    else if (v === 1) {
+      textFlash = 1.6;
+      for (const p of parts) if (Math.abs(p.ty - nameY) < nameSize * 1.4) {
+        p.vx += (Math.random() - .5) * 22; p.vy += (Math.random() - .5) * 18;
+      }
+      sparkleBurst(W / 2, nameY, 115, 6);
+    } else if (v === 2) {
+      textFlash = 1.8;
+      for (const p of parts) if (Math.abs(p.ty - nameY) < nameSize * 1.4) {
+        const dx = W / 2 - p.x, dy = nameY - p.y;
+        p.vx += dx * 0.08 + (Math.random() - .5) * 4;
+        p.vy += dy * 0.08 - Math.random() * 5;
+      }
+      for (let i = 0; i < 36; i++) spawnHeart(W / 2 + (Math.random()-.5)*W*.5, nameY,
+        (Math.random()-.5)*2, -1-Math.random()*2, 3+Math.random()*6, 80+Math.random()*60);
+    } else {
+      textFlash = 1.6;
+      for (const p of parts) if (Math.abs(p.ty - nameY) < nameSize * 1.4) {
+        p.vx += Math.sign(p.tx - W/2 || 1) * (3 + Math.random()*7);
+        p.vy -= Math.random()*5;
+      }
+      sparkleBurst(W / 2, nameY, 90, 5);
+    }
+  }
+  function randomScene() {
+    pickVariant('scene', 4);
+    const x = W * (0.18 + Math.random() * 0.64);
+    const y = H * (0.12 + Math.random() * 0.58);
+    textFlash = 0.9;
+    if (Math.random() < 0.5) {
+      for (let i = 0; i < 5; i++) rings.push({ r: 8, max: Math.max(W,H) * (0.25 + Math.random()*.25), d: i*8, a: .65 });
+    }
+    sparkleBurst(x, y, 70 + Math.floor(Math.random()*55), 5.5);
+  }
+  function runRandomAnimation(target) {
+    if (reduce || document.hidden) return;
+    if (target === 'heart') randomHeart();
+    else if (target === 'title') randomTitle();
+    else if (target === 'name') randomName();
+    else randomScene();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) clearTimeout(autoTimer);
+  });
+
   function loop() { step(); draw(); requestAnimationFrame(loop); }
 
   function setPtr(e) { ptr.x = e.clientX; ptr.y = e.clientY; ptr.active = true; }
@@ -315,8 +494,15 @@ const APP_VERSION = 16;
     setPtr(e);
     if (reduce) return;
     const dx = e.clientX - heart.x, dy = e.clientY - heart.y;
-    if (Math.sqrt(dx * dx + dy * dy) < heart.s * 1.25) tapHeart();
-    else burst(e.clientX, e.clientY, 1);
+    if (Math.sqrt(dx * dx + dy * dy) < heart.s * 1.25) {
+      runRandomAnimation('heart');
+    } else if (Math.abs(e.clientY - wordY) < wordSize * 1.15) {
+      runRandomAnimation('title');
+    } else if (Math.abs(e.clientY - nameY) < nameSize * 1.35) {
+      runRandomAnimation('name');
+    } else {
+      runRandomAnimation('scene');
+    }
   });
   window.addEventListener('pointerup', e => { if (e.pointerType !== 'mouse') ptr.active = false; });
   window.addEventListener('pointerleave', () => { ptr.active = false; });
@@ -375,9 +561,23 @@ const APP_VERSION = 16;
     setTimeout(() => { copyBtn.textContent = 'E-Mail-Adresse kopieren'; }, 2000);
   });
 
-  function start() { resize(); if (!reduce) loop(); }
-  if (document.fonts && document.fonts.load) document.fonts.load('800 80px "Bricolage Grotesque"').then(start, start);
-  else start();
+  // Sofort zeichnen: nicht darauf warten, dass eine Web-Schrift aus dem Internet lädt.
+  // So ist Herz, Schriftzug und Name auch beim allerersten Offline-/Handy-Aufruf sichtbar.
+  let started = false;
+  function start() {
+    resize();
+    if (!started) {
+      started = true;
+      if (!reduce) loop();
+    }
+  }
+  start();
+  // Falls die Wunschschrift später verfügbar wird, Darstellung einmal sauber neu aufbauen.
+  if (document.fonts && document.fonts.load) {
+    document.fonts.load('800 80px "Bricolage Grotesque"')
+      .then(() => { resize(); })
+      .catch(() => {});
+  }
 })();
 </script>
 </body>
