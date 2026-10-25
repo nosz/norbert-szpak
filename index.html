@@ -1,5 +1,384 @@
-<h1>Norbert Szpak<br>
-Talheimer Str.8<br>
-74081 Heilbronn<br>
-E-Mail: n.szpak@web.de<br>
-</h1>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Norbert Szpak – Kontakt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #4a1680;
+  --bg-deep: #1e0a36;
+  --sand: #f6e8fa;
+  --amber: #b0126f;
+  --sea: #ff7eb6;
+  --muted: #c9a6dd;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #4a1680; --bg-deep: #1e0a36; }
+}
+:root[data-theme="dark"] { --bg: #4a1680; --bg-deep: #1e0a36; }
+*, *::before, *::after { box-sizing: inherit; }
+html, body { height: 100%; margin: 0; }
+body {
+  background:
+    radial-gradient(70% 50% at 85% 6%, rgba(255,79,160,.22), transparent 60%),
+    radial-gradient(80% 60% at 8% 100%, rgba(197,139,255,.20), transparent 60%),
+    radial-gradient(120% 90% at 50% 12%, #6a1fa0 0%, #3a1360 45%, var(--bg-deep) 100%);
+  color: var(--sand);
+  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  overflow: hidden;
+}
+canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+#card {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  width: min(calc(100% - 2rem), 24rem);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 3.6rem);
+  display: flex; flex-direction: column; gap: .55rem;
+  padding: .9rem; font-style: normal;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 1.5rem;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(20,4,40,.45);
+}
+.lines { display: flex; flex-direction: column; gap: 0; text-align: center; line-height: 1.5; font-size: .95rem; }
+.street { color: var(--sand); font-weight: 500; }
+.city { color: var(--muted); }
+.row { display: grid; grid-template-columns: minmax(0, 1fr); gap: .55rem; }
+.btn {
+  font: inherit; font-weight: 800; font-size: clamp(.82rem, 3.4vw, .92rem);
+  min-height: 2.5rem; min-width: 0; display: flex; align-items: center; justify-content: center;
+  padding: .5rem .8rem; border-radius: 999px; text-decoration: none; text-align: center;
+  cursor: pointer; white-space: nowrap; border: 2px solid transparent;
+  transition: transform .2s ease, filter .2s ease;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.12); }
+.btn:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
+.main {
+  background: linear-gradient(100deg, #ff4fa0, #b0126f 55%, #7a2bd0); color: #fff;
+  box-shadow: 0 8px 24px rgba(224,21,127,.4); font-size: clamp(.88rem, 3.7vw, 1rem);
+}
+.ico { width: 1.2em; height: 1.2em; flex: none; margin-right: .5rem; }
+.solid { background: var(--amber); color: #fff; padding: .4rem .8rem; }
+.ghost { background: rgba(255,255,255,.06); color: var(--sand); border-color: var(--sea); padding: .4rem .8rem; }
+#note {
+  position: absolute; left: 0; right: 0; top: calc(100% + .6rem);
+  text-align: center; font-size: .85rem; line-height: 1.4; color: var(--muted); padding: 0 .5rem;
+}
+@media (max-width: 320px) { .row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<h1>Norbert Szpak</h1>
+<canvas id="c" aria-hidden="true"></canvas>
+<address id="card">
+  <div class="lines"><span class="street">Talheimer Str. 8</span><span class="city">74081 Heilbronn</span></div>
+  <a id="app" class="btn main" href="https://nosz.github.io/herzintelligenz/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Herzintelligenz entdecken</a>
+  <div class="row">
+    <a id="mail" class="btn solid" href="mailto:n.szpak@web.de" target="_top" rel="noopener">n.szpak@web.de</a>
+    <button id="copy" class="btn ghost" type="button">E-Mail-Adresse kopieren</button>
+  </div>
+  <div id="note" role="status"></div>
+</address>
+
+<script>
+const APP_VERSION = 16;
+
+(function () {
+  const cv = document.getElementById('c');
+  const ctx = cv.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FONT = '"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif';
+  let W = 0, H = 0, dpr = 1, T = 0, frame = 0;
+  let parts = [], dust = [], fx = [], rings = [], orbit = [];
+  const BEAT = 2.1;            // Sekunden pro Herzschlag (ca. 29 Schläge/Min), ruhige Pause zwischen den Doppelschlägen
+  let lastPh = 0;
+  const ptr = { x: -9999, y: -9999, active: false };
+  const heart = { bx: 0, by: 0, x: 0, y: 0, s: 50, beat: 0, beatV: 0, pulse: 0 };
+  const ROSE = ['#ff7eb6', '#ff4fa0', '#f3d9f7', '#c58bff', '#ffc1dc'];
+
+  function colorAt(x) {
+    const t = Math.max(0, Math.min(1, x / W));
+    return 'hsl(' + (332 - t * 55).toFixed(0) + ' 85% ' + (68 + t * 2) + '%)';
+  }
+
+  function fitFont(o, text, maxW) {
+    o.font = '800 100px ' + FONT;
+    return 100 * maxW / o.measureText(text).width;
+  }
+
+  function heartPath(c, x, y, s, rot) {
+    c.beginPath();
+    const k = s / 17, cr = Math.cos(rot || 0), sr = Math.sin(rot || 0);
+    for (let i = 0; i <= 64; i++) {
+      const t = i / 64 * Math.PI * 2;
+      const hx = 16 * Math.pow(Math.sin(t), 3) * k;
+      const hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)) * k + s * 0.08;
+      const px = x + hx * cr - hy * sr, py = y + hx * sr + hy * cr;
+      i ? c.lineTo(px, py) : c.moveTo(px, py);
+    }
+    c.closePath();
+  }
+
+  function buildTargets() {
+    const off = document.createElement('canvas');
+    off.width = W; off.height = H;
+    const o = off.getContext('2d', { willReadFrequently: true });
+    o.fillStyle = '#fff'; o.textAlign = 'center'; o.textBaseline = 'middle';
+    const word = 'HERZINTELLIGENZ';
+    const R = Math.max(240, document.getElementById('card').getBoundingClientRect().top - 12);
+    heart.s = Math.max(36, Math.min(72, Math.min(W, H) * 0.1));
+    heart.bx = W / 2;
+    heart.by = Math.max(R * 0.13, heart.s * 1.3 + 14);
+    const wordFs = Math.min(fitFont(o, word, W * 0.84), H * 0.07);
+    const wy = Math.max(R * 0.30, heart.by + heart.s * 1.35 + wordFs * 0.7);
+    const nameFs = Math.min(fitFont(o, 'Norbert', W * 0.8), H * 0.1, Math.max(36, (R - wy) * 0.34));
+    let ny = Math.max(wy + wordFs * 0.6 + nameFs * 1.3 + 20, R * 0.66);
+    ny = Math.min(ny, R - 8 - nameFs * 1.3);
+    o.font = '800 ' + wordFs + 'px ' + FONT;
+    o.fillText(word, W / 2, wy);
+    o.font = '800 ' + nameFs + 'px ' + FONT;
+    o.fillText('Norbert', W / 2, ny - nameFs * 0.52);
+    o.fillText('Szpak', W / 2, ny + nameFs * 0.52);
+    const data = o.getImageData(0, 0, W, H).data;
+    const pts = [];
+    function sample(y0, y1, gap) {
+      for (let y = Math.max(0, Math.floor(y0)); y < Math.min(H, y1); y += gap)
+        for (let x = 0; x < W; x += gap)
+          if (data[(y * W + x) * 4 + 3] > 140) pts.push([x, y, gap * 0.72]);
+    }
+    sample(wy - wordFs, wy + wordFs, Math.max(2, Math.round(wordFs / 15)));
+    sample(ny - nameFs * 1.3, ny + nameFs * 1.3, Math.max(3, Math.round(nameFs / 22)));
+    return pts;
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const pts = buildTargets();
+    pts.sort(() => Math.random() - 0.5);
+    while (parts.length < pts.length)
+      parts.push({ x: Math.random() * W, y: Math.random() * H, vx: 0, vy: 0, tx: 0, ty: 0, c: '', s: 2, k: 0.02 });
+    parts.length = pts.length;
+    parts.forEach((p, i) => {
+      p.tx = pts[i][0]; p.ty = pts[i][1]; p.s = pts[i][2];
+      p.c = colorAt(p.tx); p.k = 0.018 + Math.random() * 0.022;
+    });
+    const nd = Math.round(Math.min(140, W * H / 9000));
+    dust = [];
+    for (let i = 0; i < nd; i++)
+      dust.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: -0.1 - Math.random() * .3, r: .6 + Math.random() * 1.4, a: .15 + Math.random() * .35 });
+    orbit = [];
+    for (let i = 0; i < 14; i++)
+      orbit.push({ a: Math.random() * 6.28, sp: (0.004 + Math.random() * 0.008) * (i % 2 ? 1 : -1), rx: 1.4 + Math.random() * 0.7, ry: 1.2 + Math.random() * 0.6, r: 0.8 + Math.random() * 1.6, ph: Math.random() * 6.28 });
+    if (reduce) { parts.forEach(p => { p.x = p.tx; p.y = p.ty; }); updateHeart(); draw(); }
+  }
+
+  function updateHeart() {
+    heart.x = heart.bx + Math.sin(T * 0.6) * 6;
+    heart.y = heart.by + Math.sin(T * 0.9) * 10;
+  }
+
+  function spawnHeart(x, y, vx, vy, size, life) {
+    fx.push({ t: 'h', x, y, vx, vy, s: size, life, max: life, c: ROSE[(Math.random() * ROSE.length) | 0], rot: (Math.random() - .5) * 0.8 });
+  }
+
+  function tapHeart() {
+    heart.beatV = 0.09;
+    for (let i = 0; i < 34; i++) {
+      const a = Math.random() * 6.283, v = 1.5 + Math.random() * 5;
+      spawnHeart(heart.x, heart.y, Math.cos(a) * v, Math.sin(a) * v - 1.2, 4 + Math.random() * 9, 70 + Math.random() * 60);
+    }
+    for (let i = 0; i < 60; i++) {
+      const a = Math.random() * 6.283, v = 1 + Math.random() * 7;
+      fx.push({ t: 'p', x: heart.x, y: heart.y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, s: 1 + Math.random() * 2.2, life: 40 + Math.random() * 60, max: 100, c: ROSE[(Math.random() * ROSE.length) | 0] });
+    }
+    for (let i = 0; i < 3; i++) rings.push({ r: heart.s * 0.6, max: Math.max(W, H) * 0.45, d: i * 8 });
+    burst(heart.x, heart.y, 0.55);
+  }
+
+  function burst(x, y, power) {
+    for (const p of parts) {
+      const dx = p.x - x, dy = p.y - y;
+      const d = Math.sqrt(dx * dx + dy * dy) || 1;
+      const f = (14 + Math.random() * 14) * power;
+      p.vx += dx / d * f + (Math.random() - .5) * 8 * power;
+      p.vy += dy / d * f + (Math.random() - .5) * 8 * power;
+    }
+  }
+
+  function step() {
+    T += 1 / 60; frame++;
+    updateHeart();
+    const ph = (T % BEAT) / BEAT;
+    heart.pulse = Math.exp(-Math.pow((ph - 0.025) / 0.032, 2)) + 0.65 * Math.exp(-Math.pow((ph - 0.32) / 0.036, 2));
+    lastPh = ph;
+    heart.beat += heart.beatV; heart.beatV += -heart.beat * 0.22; heart.beatV *= 0.82;
+    if (frame % 170 === 0) spawnHeart(heart.x + (Math.random() - .5) * heart.s, heart.y + heart.s * 0.2, (Math.random() - .5) * 0.4, -0.5 - Math.random() * 0.4, 3 + Math.random() * 4, 150);
+    const R = Math.max(70, Math.min(W, H) * 0.12);
+    for (const p of parts) {
+      let fx_ = (p.tx - p.x) * p.k, fy_ = (p.ty - p.y) * p.k;
+      if (ptr.active) {
+        const dx = p.x - ptr.x, dy = p.y - ptr.y, d2 = dx * dx + dy * dy;
+        if (d2 < R * R) { const d = Math.sqrt(d2) || 1, f = (1 - d / R) * 3.2; fx_ += dx / d * f; fy_ += dy / d * f; }
+      }
+      p.vx = (p.vx + fx_) * 0.88; p.vy = (p.vy + fy_) * 0.88;
+      p.x += p.vx; p.y += p.vy;
+    }
+    for (const d of dust) {
+      d.x += d.vx; d.y += d.vy;
+      if (d.y < -4) { d.y = H + 4; d.x = Math.random() * W; }
+      if (d.x < -4) d.x = W + 4; else if (d.x > W + 4) d.x = -4;
+    }
+    for (let i = fx.length - 1; i >= 0; i--) {
+      const f = fx[i];
+      f.x += f.vx; f.y += f.vy; f.vy -= 0.03; f.vx *= 0.985; f.vy *= 0.985;
+      if (--f.life <= 0) fx.splice(i, 1);
+    }
+    for (let i = rings.length - 1; i >= 0; i--) {
+      const r = rings[i];
+      if (r.d > 0) { r.d--; continue; }
+      r.r += 5;
+      if (r.r > r.max) rings.splice(i, 1);
+    }
+  }
+
+  function drawHeart() {
+    const sc = 1 + heart.pulse * 0.10 + heart.beat;
+    const hr = heart.s * (3.2 + heart.pulse * 1.6);
+    const halo = ctx.createRadialGradient(heart.x, heart.y, 0, heart.x, heart.y, hr);
+    halo.addColorStop(0, 'rgba(255,79,160,' + (0.16 + heart.pulse * 0.22).toFixed(3) + ')');
+    halo.addColorStop(1, 'rgba(255,79,160,0)');
+    ctx.fillStyle = halo;
+    ctx.fillRect(heart.x - hr, heart.y - hr, hr * 2, hr * 2);
+    const s = heart.s * sc, rot = Math.sin(T * 0.7) * 0.06;
+    for (const o of orbit) {
+      o.a += o.sp;
+      const x = heart.x + Math.cos(o.a) * heart.s * o.rx, y = heart.y + Math.sin(o.a) * heart.s * o.ry;
+      ctx.globalAlpha = 0.25 + 0.6 * Math.abs(Math.sin(T * 1.1 + o.ph));
+      ctx.fillStyle = '#ffd6ec';
+      ctx.beginPath(); ctx.arc(x, y, o.r, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    ctx.save();
+    ctx.shadowColor = 'rgba(224,21,127,0.85)'; ctx.shadowBlur = 30 + heart.pulse * 60 + heart.beat * 200;
+    const g = ctx.createLinearGradient(heart.x - s, heart.y - s, heart.x + s * 0.8, heart.y + s);
+    g.addColorStop(0, '#ff8cc6'); g.addColorStop(0.5, '#e0157f'); g.addColorStop(1, '#a0106a');
+    ctx.fillStyle = g;
+    heartPath(ctx, heart.x, heart.y, s, rot); ctx.fill();
+    ctx.restore();
+    ctx.save();
+    ctx.globalAlpha = 0.5; ctx.fillStyle = '#fff';
+    ctx.translate(heart.x - s * 0.42, heart.y - s * 0.4); ctx.rotate(-0.6 + rot);
+    ctx.beginPath(); ctx.ellipse(0, 0, s * 0.2, s * 0.09, 0, 0, 6.2832); ctx.fill();
+    ctx.restore();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f3d9f7';
+    for (const d of dust) { ctx.globalAlpha = d.a; ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.2832); ctx.fill(); }
+    ctx.globalAlpha = 1;
+    for (const p of parts) { ctx.fillStyle = p.c; ctx.fillRect(p.x - p.s / 2, p.y - p.s / 2, p.s, p.s); }
+    for (const r of rings) {
+      if (r.d > 0) continue;
+      ctx.globalAlpha = Math.max(0, 1 - r.r / r.max) * 0.7 * (r.a || 1);
+      ctx.strokeStyle = '#ff7eb6'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(heart.x, heart.y, r.r, 0, 6.2832); ctx.stroke();
+    }
+    drawHeart();
+    for (const f of fx) {
+      ctx.globalAlpha = Math.min(1, f.life / (f.max * 0.5));
+      ctx.fillStyle = f.c;
+      if (f.t === 'h') { heartPath(ctx, f.x, f.y, f.s, f.rot); ctx.fill(); }
+      else { ctx.beginPath(); ctx.arc(f.x, f.y, f.s, 0, 6.2832); ctx.fill(); }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function loop() { step(); draw(); requestAnimationFrame(loop); }
+
+  function setPtr(e) { ptr.x = e.clientX; ptr.y = e.clientY; ptr.active = true; }
+  window.addEventListener('pointermove', setPtr);
+  window.addEventListener('pointerdown', e => {
+    if (e.target.closest && e.target.closest('#card')) return;
+    setPtr(e);
+    if (reduce) return;
+    const dx = e.clientX - heart.x, dy = e.clientY - heart.y;
+    if (Math.sqrt(dx * dx + dy * dy) < heart.s * 1.25) tapHeart();
+    else burst(e.clientX, e.clientY, 1);
+  });
+  window.addEventListener('pointerup', e => { if (e.pointerType !== 'mouse') ptr.active = false; });
+  window.addEventListener('pointerleave', () => { ptr.active = false; });
+  window.addEventListener('resize', resize);
+
+  const mail = document.getElementById('mail');
+  const appLink = document.getElementById('app');
+  const copyBtn = document.getElementById('copy');
+  const note = document.getElementById('note');
+  const ADDR = 'n.szpak@web.de';
+  const APP_URL = 'https://nosz.github.io/herzintelligenz/';
+  let noteTimer = 0;
+
+  async function copyText(text) {
+    try { await navigator.clipboard.writeText(text); return true; } catch (err) {}
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+      document.body.appendChild(ta); ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (err) { return false; }
+  }
+  function say(msg) {
+    note.textContent = msg;
+    clearTimeout(noteTimer);
+    noteTimer = setTimeout(() => { note.textContent = ''; }, 6000);
+  }
+  // Link öffnet nativ; falls nichts passiert (blockiert), Ziel kopieren und Hinweis zeigen
+  function guard(el, text, okMsg, failMsg) {
+    el.addEventListener('pointerdown', e => e.stopPropagation());
+    el.addEventListener('click', () => {
+      let left = false;
+      const mark = () => { left = true; };
+      window.addEventListener('blur', mark, { once: true });
+      document.addEventListener('visibilitychange', mark, { once: true });
+      setTimeout(async () => {
+        if (left) return;
+        say((await copyText(text)) ? okMsg : failMsg);
+      }, 900);
+    });
+  }
+  guard(mail, ADDR,
+    'Mail-App hier nicht erreichbar. Adresse kopiert, bitte in die Mail-App einfügen.',
+    'Mail-App hier nicht erreichbar. Adresse: ' + ADDR);
+  guard(appLink, APP_URL,
+    'Link hier nicht erreichbar. Er ist kopiert, bitte im Browser einfügen.',
+    'Link hier nicht erreichbar: ' + APP_URL);
+
+  copyBtn.addEventListener('pointerdown', e => e.stopPropagation());
+  copyBtn.addEventListener('click', async () => {
+    const ok = await copyText(ADDR);
+    copyBtn.textContent = ok ? 'Adresse kopiert \u2713' : 'Kopieren nicht möglich';
+    setTimeout(() => { copyBtn.textContent = 'E-Mail-Adresse kopieren'; }, 2000);
+  });
+
+  function start() { resize(); if (!reduce) loop(); }
+  if (document.fonts && document.fonts.load) document.fonts.load('800 80px "Bricolage Grotesque"').then(start, start);
+  else start();
+})();
+</script>
+</body>
+</html>
