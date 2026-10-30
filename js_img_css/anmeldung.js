@@ -3,7 +3,7 @@
 (function () {
   // Adresse der Google-Apps-Script-Web-App (Anmeldungen in die Google-Tabelle). Leer = E-Mail-Weg.
   // Die echte Adresse nie in Chats, Tickets oder Dokumenten weitergeben, sondern aus Bitwarden erst beim Veröffentlichen eintragen: <APPS_SCRIPT_URL>
-  var ENDPOINT = "";
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbxjftaffauLm5onbUPxxKAcI94MTABXypYt9emqrkyjEIZF4hiB4lWfhg3beyie4LLr/exec";
   // Ersatzweg ohne Tabelle: Empfänger-Adresse der E-Mail (leer = Hinweis statt E-Mail): <EMPFAENGER_EMAIL>
   var EMPFAENGER = "";
 
