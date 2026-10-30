@@ -11,7 +11,7 @@
   --kt-fehler: #b3261e;
   --kt-ok: #146c2e;
 }
-html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; scroll-padding-top: 80px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { margin: 0; background: var(--kt-bg); color: var(--kt-text); font: 400 1rem/1.6 "Noto Sans", "Segoe UI", Arial, sans-serif; display: flex; min-height: 100vh; flex-direction: column; }
 .kt-wrap { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 16px; }
@@ -22,7 +22,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .kt-skip:focus { left: 16px; }
 
 /* Kopf */
-.kt-header { background: var(--kt-navy); color: #fff; }
+.kt-header { position: sticky; top: 0; z-index: 100; background: var(--kt-navy); color: #fff; box-shadow: 0 2px 8px rgba(15,30,61,.25); }
 .kt-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
 .kt-brand { display: inline-flex; align-items: center; gap: 12px; color: #fff; font-weight: 600; font-size: 1.125rem; text-decoration: none; }
 .kt-brand .bi { font-size: 1.5rem; color: #8fb0ff; }
