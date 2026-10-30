@@ -73,6 +73,13 @@ h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: i
   text-align: center; font-size: .85rem; line-height: 1.4; color: var(--muted); padding: 0 .5rem;
 }
 @media (max-width: 320px) { .row { grid-template-columns: 1fr; } }
+/* Gezoomt oder niedriges Fenster: Karte kompakter, damit Herz und Schriftzug Platz behalten */
+@media (max-height: 620px) {
+  #card { bottom: calc(env(safe-area-inset-bottom, 0px) + 2.4rem); padding: .6rem; gap: .35rem; }
+  .lines { font-size: .85rem; line-height: 1.35; }
+  .btn { min-height: 2.1rem; padding-top: .3rem; padding-bottom: .3rem; }
+  #note { font-size: .75rem; top: calc(100% + .3rem); }
+}
 </style>
 </head>
 <body>
@@ -81,7 +88,9 @@ h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: i
 <address id="card">
   <div class="lines"><span class="street">Talheimer Str. 8</span><span class="city">74081 Heilbronn</span></div>
   <a id="app" class="btn main" href="https://nosz.github.io/herzintelligenz/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Herzintelligenz entdecken</a>
+  <!-- KI-Training-Button vorübergehend ausgeblendet
   <a id="ki" class="btn main" href="ki-training.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2v2H7a2 2 0 0 0-2 2v2H3v2h2v4H3v2h2v2a2 2 0 0 0 2 2h2v2h2v-2h2v2h2v-2h2a2 2 0 0 0 2-2v-2h2v-2h-2v-4h2V8h-2V6a2 2 0 0 0-2-2h-2V2h-2v2h-2V2H9zM7 6h10v12H7V6zm3 3v6h4V9h-4z"/></svg>KI-Training für Firmen</a>
+  -->
   <div class="row">
     <a id="mail" class="btn solid" href="mailto:n.szpak@web.de" target="_top" rel="noopener">n.szpak@web.de</a>
     <button id="copy" class="btn ghost" type="button">E-Mail-Adresse kopieren</button>
@@ -90,7 +99,7 @@ h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: i
 </address>
 
 <script>
-const APP_VERSION = 17;
+const APP_VERSION = 18;
 
 (function () {
   const cv = document.getElementById('c');
@@ -135,18 +144,29 @@ const APP_VERSION = 17;
     const o = off.getContext('2d', { willReadFrequently: true });
     o.fillStyle = '#fff'; o.textAlign = 'center'; o.textBaseline = 'middle';
     const word = 'HERZINTELLIGENZ';
-    const R = Math.max(240, document.getElementById('card').getBoundingClientRect().top - 12);
-    heart.s = Math.max(36, Math.min(72, Math.min(W, H) * 0.1));
-    heart.bx = W / 2;
-    heart.by = Math.max(R * 0.11, heart.s * 1.3 + 14);
-    const wordFs = Math.min(fitFont(o, word, W * 0.92), H * 0.085);
-    wordSize = wordFs;
+    // Platz über der Karte. Beim Zoomen schrumpft die Fläche in CSS-Pixeln, die Karte nicht.
+    const R = Math.max(90, document.getElementById('card').getBoundingClientRect().top - 8);
+    let hs = Math.min(72, Math.min(W, H) * 0.1);
+    let wordFs = Math.min(fitFont(o, word, W * 0.92), H * 0.085);
     // Anordnung wie in der Vorlage: Herz oben, Titel darunter, Name mit großzügigem Abstand.
-    const wy = Math.max(R * 0.30, heart.by + heart.s * 1.5 + wordFs * 0.75, wordFs * 0.8 + 24);
-    const nameFs = Math.min(fitFont(o, 'Norbert', W * 0.8), H * 0.13, Math.max(36, (R - wy) * 0.29));
+    let by = Math.max(R * 0.11, hs * 1.3 + 14);
+    let wy = Math.max(R * 0.30, by + hs * 1.5 + wordFs * 0.75, wordFs * 0.8 + 24);
+    let nameFs = Math.min(fitFont(o, 'Norbert', W * 0.8), H * 0.13, Math.max(20, (R - wy) * 0.29));
     let ny = Math.max(wy + wordFs * 0.6 + nameFs * 1.6 + 20, R * 0.62);
-    nameSize = nameFs;
-    ny = Math.min(ny, R - 8 - nameFs * 1.3);
+    if (ny + nameFs * 1.3 > R - 4 || by + hs * 1.5 > wy - wordFs * 0.6) {
+      // Zu wenig Platz: Herz, Titel und Name gemeinsam verkleinern und ohne Überlappung stapeln.
+      // Herz bleibt gut sichtbar, Titel darf die volle Breite nutzen, Name bleibt kleiner als der Titel.
+      hs = Math.min(hs, Math.max(14, R * 0.12));
+      const wf0 = fitFont(o, word, W * 0.92);
+      const nf0 = Math.min(fitFont(o, 'Norbert', W * 0.8), wf0 * 1.1, 117);
+      const f = Math.max(0.12, Math.min(1, (R - 14 - 3 * hs) / (1.4 * wf0 + 2.65 * nf0)));
+      wordFs = wf0 * f; nameFs = nf0 * f;
+      by = hs * 1.5 + 6;
+      wy = by + hs * 1.5 + wordFs * 0.7;
+      ny = wy + wordFs * 0.7 + nameFs * 1.35 + 8;
+    }
+    heart.s = hs; heart.bx = W / 2; heart.by = by;
+    wordSize = wordFs; nameSize = nameFs;
     wordY = wy; nameY = ny;
     o.font = '800 ' + wordFs + 'px ' + FONT;
     o.fillText(word, W / 2, wy);
@@ -158,10 +178,11 @@ const APP_VERSION = 17;
     function sample(y0, y1, gap) {
       for (let y = Math.max(0, Math.floor(y0)); y < Math.min(H, y1); y += gap)
         for (let x = 0; x < W; x += gap)
-          if (data[(y * W + x) * 4 + 3] > 140) pts.push([x, y, gap * 0.72]);
+          if (data[(y * W + x) * 4 + 3] > 140) pts.push([x, y, Math.max(gap * 0.72, 1.4)]);
     }
-    sample(wy - wordFs, wy + wordFs, Math.max(2, Math.round(wordFs / 15)));
-    sample(ny - nameFs * 1.3, ny + nameFs * 1.3, Math.max(3, Math.round(nameFs / 22)));
+    // Kleine Schrift: feineres Raster, sonst wird sie zu einem Punktemuster.
+    sample(wy - wordFs, wy + wordFs, Math.max(1, Math.round(wordFs / 15)));
+    sample(ny - nameFs * 1.3, ny + nameFs * 1.3, Math.max(1, Math.round(nameFs / 22)));
     return pts;
   }
 
