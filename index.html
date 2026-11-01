@@ -65,6 +65,16 @@ h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: i
   background: linear-gradient(100deg, #ff4fa0, #b0126f 55%, #7a2bd0); color: #fff;
   box-shadow: 0 8px 24px rgba(224,21,127,.4); font-size: clamp(.88rem, 3.7vw, 1rem);
 }
+/* Hinweis auf die Veranstaltung: gleiche Form wie der Herzintelligenz-Knopf, in Blau, zwei Zeilen */
+.event {
+  background: linear-gradient(100deg, #1d7bd8, #0a3f86 70%); color: #fff;
+  box-shadow: 0 8px 24px rgba(29,123,216,.4);
+  white-space: normal; border-radius: 1.6rem; padding: .5rem 1rem;
+}
+.ev-tx { display: flex; flex-direction: column; align-items: flex-start; text-align: left; line-height: 1.25; min-width: 0; }
+.ev-t { font-size: clamp(.74rem, 3.2vw, .86rem); }
+.ev-d { font-size: .8rem; font-weight: 600; opacity: .95; }
+.ev-hz { font-size: .8em; }
 .ico { width: 1.2em; height: 1.2em; flex: none; margin-right: .5rem; }
 .solid { background: var(--amber); color: #fff; padding: .4rem .8rem; }
 .ghost { background: rgba(255,255,255,.06); color: var(--sand); border-color: var(--sea); padding: .4rem .8rem; }
@@ -88,6 +98,7 @@ h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: i
 <address id="card">
   <div class="lines"><span class="street">Talheimer Str. 8</span><span class="city">74081 Heilbronn</span></div>
   <a id="app" class="btn main" href="https://nosz.github.io/herzintelligenz/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Herzintelligenz entdecken</a>
+  <a id="event" class="btn event" href="info-veranstaltung.html" aria-label="Herzintelligenz vs. Künstliche Intelligenz, Freitag, 27.11.2026, Heilbronn-Horkheim"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5.5 4.5h13a2.5 2.5 0 0 1 2.5 2.5v12a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 19V7a2.5 2.5 0 0 1 2.5-2.5zM3 10h18M8 2.5v4M16 2.5v4"/></svg><span class="ev-tx"><span class="ev-t">Herz <span class="ev-hz" aria-hidden="true">&#10084;&#65039;</span> Intelligenz vs. Künstliche Intelligenz</span><span class="ev-d">Freitag, 27.11.2026, Heilbronn-Horkheim</span></span></a>
   <!-- KI-Training-Button vorübergehend ausgeblendet
   <a id="ki" class="btn main" href="ki-training.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2v2H7a2 2 0 0 0-2 2v2H3v2h2v4H3v2h2v2a2 2 0 0 0 2 2h2v2h2v-2h2v2h2v-2h2a2 2 0 0 0 2-2v-2h2v-2h-2v-4h2V8h-2V6a2 2 0 0 0-2-2h-2V2h-2v2h-2V2H9zM7 6h10v12H7V6zm3 3v6h4V9h-4z"/></svg>KI-Training für Firmen</a>
   -->
@@ -99,7 +110,7 @@ h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: i
 </address>
 
 <script>
-const APP_VERSION = 18;
+const APP_VERSION = 19;
 
 (function () {
   const cv = document.getElementById('c');
