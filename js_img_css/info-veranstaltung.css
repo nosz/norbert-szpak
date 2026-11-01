@@ -12,6 +12,113 @@
 .kt-seitentitel { margin: 0 0 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.25); font-size: clamp(1.375rem, 4vw, 2rem); font-weight: 700; line-height: 1.25; color: #fff; }
 .kt-herz-rot { margin: 0 .12em 0 .18em; color: #ff2d4d; font-size: .55em; vertical-align: .22em; }
 
+/* Schrift der Knöpfe und Felder: "font: ... inherit" in custom.css ist ungültig und wird vom Browser verworfen */
+.kt-btn, .kt-input, button, input, select { font-family: inherit; }
+.kt-btn { font-size: 1rem; font-weight: 600; line-height: 1.2; }
+.kt-input { font-size: 1rem; line-height: 1.5; }
+
+/* Hero: zwei Knöpfe, vier Fakten */
+.kt-hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.kt-btn-outline-light { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+.kt-btn-outline-light:hover { background: rgba(255,255,255,.14); color: #fff; }
+.kt-hero .kt-btn-outline-light:focus-visible { outline-color: #fff; }
+@media (max-width: 991.98px) { .kt-hero-facts { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 575.98px) { .kt-hero-facts { grid-template-columns: 1fr; } .kt-hero-cta .kt-btn { width: 100%; } }
+
+/* Einleitungssatz unter Überschriften */
+.kt-lead { margin: 0 0 24px; max-width: 70ch; font-size: 1.125rem; line-height: 1.6; color: var(--kt-grau); }
+.kt-note .bi { color: var(--kt-blau-dunkel); }
+
+/* Akkordeon (details/summary, ohne JavaScript, per Tastatur bedienbar) */
+.kt-akkordeon { display: grid; gap: 12px; }
+.kt-akkordeon details { border: 1px solid var(--kt-linie); border-radius: 14px; background: #fff; box-shadow: 0 1px 3px rgba(15,30,61,.06); overflow: hidden; }
+.kt-akkordeon details[open] { border-color: var(--kt-blau); box-shadow: 0 4px 16px rgba(37,87,214,.12); }
+.kt-akkordeon summary { display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 12px 20px; cursor: pointer; list-style: none; font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
+.kt-akkordeon summary::-webkit-details-marker { display: none; }
+.kt-akkordeon summary > .bi { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: var(--kt-hell); color: var(--kt-blau-dunkel); font-size: 1.25rem; }
+.kt-akkordeon summary > span { flex: 1 1 auto; min-width: 0; }
+.kt-akkordeon summary::after { content: "\F282"; flex: none; font-family: "bootstrap-icons"; font-size: 1.125rem; color: var(--kt-blau-dunkel); transition: transform .2s; }
+.kt-akkordeon details[open] > summary::after { transform: rotate(180deg); }
+.kt-akkordeon summary:hover { background: var(--kt-bg); }
+.kt-akkordeon summary:focus-visible { outline: 3px solid var(--kt-blau); outline-offset: -3px; }
+.kt-akk-body { padding: 4px 20px 20px 74px; color: var(--kt-text); }
+.kt-akk-body p { margin: 0; color: var(--kt-grau); }
+.kt-haken { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.kt-haken li { position: relative; padding-left: 32px; line-height: 1.5; }
+.kt-haken li::before { content: "\F26B"; position: absolute; left: 0; top: 1px; font-family: "bootstrap-icons"; color: var(--kt-ok); font-size: 1.125rem; }
+@media (max-width: 575.98px) {
+  .kt-akkordeon summary { padding: 12px 16px; font-size: 1.0625rem; }
+  .kt-akk-body { padding: 4px 16px 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .kt-akkordeon summary::after { transition: none; } }
+
+/* Begriffe: fünf Karten */
+.kt-begriffe { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.kt-begriffe .kt-card { padding: 20px; }
+@media (max-width: 1099.98px) { .kt-begriffe { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 767.98px) { .kt-begriffe { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 479.98px) { .kt-begriffe { grid-template-columns: 1fr; } }
+
+/* Herz trifft KI: zwei Karten mit Plus */
+.kt-verbindung { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.kt-plus { display: flex; align-items: center; justify-content: center; width: 48px; align-self: center; height: 48px; border-radius: 50%; background: var(--kt-blau); color: #fff; font-size: 1.5rem; }
+.kt-fazit { display: flex; align-items: center; gap: 12px; margin: 16px 0 0; padding: 16px 20px; border-radius: 14px; background: var(--kt-navy); color: #fff; font-size: 1.125rem; font-weight: 600; line-height: 1.5; }
+.kt-fazit .bi { flex: none; font-size: 1.5rem; color: #ffe08a; }
+@media (max-width: 767.98px) { .kt-verbindung { grid-template-columns: 1fr; } .kt-plus { justify-self: center; } }
+
+/* Teilen-Knopf in der Kopfzeile und Hinweis am unteren Rand */
+.kt-nav button.kt-nav-share { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid rgba(255,255,255,.35); border-radius: 10px; background: transparent; color: #fff; font-size: 1rem; font-weight: 600; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+.kt-nav button.kt-nav-share:hover { background: rgba(255,255,255,.12); }
+.kt-nav button.kt-nav-share:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+@media (max-width: 575.98px) {
+  .kt-nav button.kt-nav-share { width: 44px; padding: 0; justify-content: center; }
+  .kt-nav button.kt-nav-share span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+.kt-toast { position: fixed; left: 50%; bottom: 24px; z-index: 200; width: max-content; max-width: min(92vw, 520px); padding: 12px 20px; border-radius: 12px; background: var(--kt-navy); color: #fff; font-weight: 600; box-shadow: 0 8px 24px rgba(15,30,61,.35); transform: translate(-50%, 24px); opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s; }
+.kt-toast.kt-toast-an { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.kt-toast.kt-fehler { background: var(--kt-fehler); }
+@media (prefers-reduced-motion: reduce) { .kt-toast { transition: none; } }
+
+/* Teilen */
+.kt-teilen { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px 20px; align-items: center; margin-top: 40px; border-color: #9bb5f5; background: linear-gradient(135deg, #f3f7ff 0%, #fff 70%); }
+.kt-teilen .kt-icon { margin: 0; }
+.kt-teilen .kt-card-title { margin-bottom: 4px; }
+.kt-teilen-knoepfe { display: flex; flex-wrap: wrap; gap: 12px; }
+.kt-teilen .kt-status { grid-column: 1 / -1; margin: 0; min-height: 0; }
+.kt-teilen .kt-status:empty { display: none; }
+@media (max-width: 767.98px) {
+  .kt-teilen { grid-template-columns: 1fr; }
+  .kt-teilen-knoepfe .kt-btn { flex: 1 1 100%; }
+}
+
+/* Ort: Foto mit Bildunterschrift */
+.kt-ort { margin: 0; border: 1px solid var(--kt-linie); border-radius: 14px; background: #fff; box-shadow: 0 1px 3px rgba(15,30,61,.06); overflow: hidden; }
+.kt-ort img { display: block; width: 100%; height: auto; aspect-ratio: 1210 / 482; object-fit: cover; background: var(--kt-hell); }
+.kt-ort figcaption { display: flex; flex-direction: column; gap: 4px; padding: 16px 20px; color: var(--kt-grau); }
+.kt-ort figcaption strong { color: var(--kt-text); font-size: 1.0625rem; }
+.kt-ort figcaption span { display: inline-flex; align-items: center; gap: 8px; font-size: .9375rem; }
+.kt-ort figcaption .bi { color: var(--kt-blau-dunkel); }
+.kt-ort figcaption span > span { display: inline; }
+.kt-ort figcaption a { display: inline-flex; align-items: center; min-height: 24px; font-weight: 600; }
+.kt-hero-facts a.kt-hero-link { text-decoration: underline; text-underline-offset: 3px; }
+/* Ortslinks: immer zwei Knöpfe, Webseite des Wirtshauses und Google Maps */
+.kt-ortlinks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.kt-ortlinks-mitte { justify-content: center; margin: 16px 0 8px; }
+a.kt-ortlink { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--kt-linie); border-radius: 10px; background: #fff; color: var(--kt-navy); font-size: .9375rem; font-weight: 600; line-height: 1.2; text-decoration: none; white-space: nowrap; }
+a.kt-ortlink:hover { background: var(--kt-hell); border-color: var(--kt-blau); color: var(--kt-navy); }
+a.kt-ortlink .bi { flex: none; font-size: 1.125rem; color: var(--kt-blau-dunkel); }
+.kt-hero-facts a.kt-ortlink { border-color: transparent; color: var(--kt-navy); }
+.kt-hero-facts .kt-ortlinks { align-self: stretch; }
+.kt-hero .kt-ortlink:focus-visible { outline-color: #fff; }
+.kt-list li > span .kt-ortlinks { display: flex; margin-top: 8px; }
+@media (max-width: 479.98px) { .kt-ortlinks .kt-ortlink { flex: 1 1 100%; } }
+
+/* Unterlagen: hervorgehobene Karte */
+.kt-unterlagen { border-color: #9bb5f5; background: linear-gradient(135deg, #f3f7ff 0%, #fff 70%); }
+.kt-unterlagen-kopf { display: flex; align-items: flex-start; gap: 20px; }
+.kt-unterlagen-kopf .kt-icon { flex: none; margin: 0; }
+@media (max-width: 575.98px) { .kt-unterlagen-kopf { flex-direction: column; gap: 12px; } }
+
 /* Alle Herz-Symbole immer rot, nie blau */
 i.bi-heart, i.bi-heart-fill, i.bi-heart-pulse, i.bi-person-heart { color: #d90429 !important; }
 .kt-header i.bi-heart-pulse, .kt-hero i.bi-heart-fill, .kt-hero i.bi-heart-pulse { color: #ff2d4d !important; }
