@@ -3,7 +3,7 @@
 (function () {
   // Adresse der Google-Apps-Script-Web-App (Anmeldungen in die Google-Tabelle).
   // Die echte Adresse nie in Chats, Tickets oder Dokumenten weitergeben, sondern aus Bitwarden erst beim Veröffentlichen eintragen.
-  var ENDPOINT = "https://script.google.com/macros/s/AKfycbzNphJaivTNrFdGtHYfG505AYjSaiN0tpUREfB2xUsSE9a5gC9HbsVoFerYAOUtl9uA/exec";
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbxyCMPTCdZfcbNCwROAlrJLxvFeg2PTG1k7LI9JKx1uVnYMwFD0DG5TMrxaobu5mKdS/exec";
   if (ENDPOINT.charAt(0) === "<") ENDPOINT = "";
   // Version des Einwilligungstexts im Formular (wird in der Tabelle mitgespeichert); bei Textänderung hochzählen
   var CONSENT_VERSION = "infoabend-1";
