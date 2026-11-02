@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="app-version" content="1.0.1">
+<meta name="app-version" content="1.0.2">
 <meta name="theme-color" content="#0f1e3d">
 <meta name="description" content="Für Selbständige und Unternehmer: Buchhaltung automatisieren, professionelle Webseite erstellen, Angebote automatisch erstellen, neue Mitarbeiter einarbeiten und mehr. Infoabend am 27.11.2026 in Heilbronn-Horkheim, ohne Vorwissen.">
 <title>KI für Selbständige und Unternehmer – Infoabend 27.11.2026</title>
@@ -19,22 +19,23 @@
 <meta property="og:image" content="https://nosz.github.io/norbert-szpak/js_img_css/info-vorschau.png">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="stylesheet" href="js_img_css/bootstrap.min.css?v=1.3.1">
-<link rel="stylesheet" href="js_img_css/bootstrap-icons.min.css?v=1.3.1">
-<link rel="stylesheet" href="js_img_css/custom.css?v=1.3.1">
-<link rel="stylesheet" href="js_img_css/info-veranstaltung.css?v=1.3.1">
-<link rel="stylesheet" href="js_img_css/info-seite.css?v=1.3.1">
+<link rel="stylesheet" href="js_img_css/bootstrap.min.css?v=1.3.2">
+<link rel="stylesheet" href="js_img_css/bootstrap-icons.min.css?v=1.3.2">
+<link rel="stylesheet" href="js_img_css/custom.css?v=1.3.2">
+<link rel="stylesheet" href="js_img_css/info-veranstaltung.css?v=1.3.2">
+<link rel="stylesheet" href="js_img_css/info-seite.css?v=1.3.2">
 </head>
 <body>
 <a class="kt-skip" href="#inhalt">Zum Inhalt springen</a>
 <header class="kt-header">
   <div class="kt-wrap kt-bar">
-    <a class="kt-brand" href="info-veranstaltung_unternehmer.html"><i class="bi bi-briefcase" aria-hidden="true"></i><span>KI für Selbständige und Unternehmer</span></a>
+    <a class="kt-brand" href="info-veranstaltung_unternehmer.html"><i class="bi bi-briefcase" aria-hidden="true"></i><span class="kt-brand-lang">KI für Selbständige und Unternehmer</span><span class="kt-brand-kurz">Infoabend</span></a>
     <nav class="kt-nav" aria-label="Hauptnavigation">
       <a href="#automatisieren">Was du automatisierst</a>
       <a href="#herz">Herzintelligenz</a>
       <a href="#ablauf">So geht es</a>
       <a href="#fragen">Fragen</a>
+      <button class="kt-nav-share" type="button" data-teilen aria-label="Seite teilen"><i class="bi bi-share" aria-hidden="true"></i><span>Teilen</span></button>
       <a class="kt-nav-cta" href="info-veranstaltung.html#anmeldung-bereich"><i class="bi bi-ticket-perforated" aria-hidden="true"></i><span>Jetzt anmelden</span></a>
     </nav>
   </div>
@@ -46,7 +47,7 @@
   <section class="kt-hero" aria-labelledby="h-slogan">
     <div class="kt-hero-grid">
     <div class="kt-hero-main">
-    <p class="kt-hero-badge"><i class="bi bi-briefcase" aria-hidden="true"></i><span>Für Selbständige und Unternehmer</span></p>
+    <p class="kt-hero-badge"><i class="bi bi-briefcase" aria-hidden="true"></i><span>Für Selbständige &amp; Unternehmer</span></p>
     <h1 id="h-slogan" class="kt-hero-slogan">Dein Geschäft läuft. Die Verwaltung frisst deine Zeit. <em>Das muss nicht sein.</em></h1>
     <p class="kt-hero-text">Buchhaltung, Angebote, Webseite, Einarbeitung neuer Mitarbeiter: Vieles davon erledigt KI heute für dich oder mit dir. Du siehst an einem Abend, wo du ansetzt, <strong>ohne Vorwissen</strong> und mit Beispielen aus dem Geschäftsalltag. Der Schlüssel dazu ist deine Herz<i class="bi bi-heart-fill kt-herz" aria-hidden="true"></i><span class="visually-hidden"> </span>Intelligenz: die Voraussetzung, KI überhaupt erst zu verstehen.</p>
     <ul class="kt-zielgruppen" aria-label="Das erwartet dich">
@@ -267,6 +268,28 @@
     </ul>
   </section>
 
+  <section id="teilen" aria-labelledby="h-teilen">
+    <div class="kt-card kt-teilen">
+      <span class="kt-icon"><i class="bi bi-share" aria-hidden="true"></i></span>
+      <div class="kt-teilen-text">
+        <h2 id="h-teilen" class="kt-card-title">Kennst du jemanden, der mehr Zeit für sein Geschäft gewinnen will?</h2>
+        <p class="kt-card-text">Teile diese Seite mit Selbständigen und Unternehmern in deinem Netzwerk. Ein Klick genügt.</p>
+      </div>
+      <div class="kt-teilen-knoepfe">
+        <button class="kt-btn kt-btn-primary" id="teilen-knopf" type="button" data-teilen><i class="bi bi-share" aria-hidden="true"></i><span>Teilen</span></button>
+        <button class="kt-btn kt-btn-ghost" id="kopieren-knopf" type="button"><i class="bi bi-link-45deg" aria-hidden="true"></i><span>Link kopieren</span></button>
+      </div>
+      <div class="kt-teilen-kanaele">
+        <p class="kt-teilen-kanaele-titel">Direkt senden über</p>
+        <a class="kt-kanal kt-kanal-wa" data-kanal="whatsapp" target="_blank" rel="noopener" aria-label="Per WhatsApp teilen (neues Fenster)"><i class="bi bi-whatsapp" aria-hidden="true"></i>WhatsApp</a>
+        <a class="kt-kanal kt-kanal-li" data-kanal="linkedin" target="_blank" rel="noopener" aria-label="Auf LinkedIn teilen (neues Fenster)"><i class="bi bi-linkedin" aria-hidden="true"></i>LinkedIn</a>
+        <a class="kt-kanal kt-kanal-mail" data-kanal="mail" aria-label="Per E-Mail teilen"><i class="bi bi-envelope" aria-hidden="true"></i>E-Mail</a>
+        <p class="kt-teilen-hinweis">Es wird nichts gesendet, bis du auf einen Kanal klickst. Dann öffnet sich der jeweilige Dienst.</p>
+      </div>
+      <p class="kt-status" id="teilen-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
 </div>
 </main>
 
@@ -274,9 +297,11 @@
   <div class="kt-wrap">
     <span>&copy; 2026 Norbert Szpak</span>
     <span class="kt-footer-links"><a href="info-veranstaltung.html">Infoabend</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></span>
-    <span>Version <span data-app-version>1.0.1</span></span>
+    <span>Version <span data-app-version>1.0.2</span></span>
   </div>
 </footer>
-<script src="js_img_css/info-seite.js?v=1.3.1"></script>
+<div class="kt-toast" id="teilen-toast" role="status" aria-live="polite"></div>
+<script src="js_img_css/info-teilen.js?v=1.3.2"></script>
+<script src="js_img_css/info-seite.js?v=1.3.2"></script>
 </body>
 </html>
