@@ -173,3 +173,72 @@
   .kt-toast { bottom: 88px; }
 }
 @media (prefers-reduced-motion: reduce) { .kt-sticky { transition: none; } }
+
+/* ---------- Hervorgehobene Karte: Übersicht über alles ---------- */
+.kt-auto-breit { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 1.2fr) minmax(0, 1fr); gap: 8px 24px; align-items: center; border-top-color: #e0245e; background: linear-gradient(135deg, #fff 0%, #f3f7ff 100%); }
+.kt-auto-breit .kt-icon { margin: 0; width: 64px; height: 64px; font-size: 2rem; }
+.kt-auto-breit h3 { font-size: 1.375rem; }
+.kt-auto-breit > div > p { margin: 0; color: var(--kt-grau); }
+.kt-auto-breit .kt-haken { margin: 0; }
+@media (max-width: 1099.98px) { .kt-auto-breit { grid-template-columns: 1fr; } .kt-auto-breit .kt-icon { width: 56px; height: 56px; font-size: 1.75rem; } }
+
+/* ---------- Wieder Zeit für das Wichtige ---------- */
+.kt-wichtig { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.kt-wichtig .kt-ziel h3 { font-size: 1.5rem; }
+.kt-wichtig .kt-ziel > p { font-size: 1.0625rem; }
+.kt-fazit .bi-heart-fill { color: var(--kt-rot); }
+@media (max-width: 767.98px) { .kt-wichtig { grid-template-columns: 1fr; } .kt-wichtig .kt-ziel h3 { font-size: 1.3125rem; } }
+
+/* ---------- Teilen: Kanäle ---------- */
+.kt-teilen-kanaele { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 4px 0 0; padding: 16px 0 0; border-top: 1px solid var(--kt-linie); }
+.kt-teilen-kanaele-titel { flex: 0 0 100%; margin: 0; font-size: .875rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--kt-grau); }
+a.kt-kanal { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 20px; border: 1px solid var(--kt-linie); border-radius: 12px; background: #fff; color: var(--kt-navy); font-weight: 600; text-decoration: none; }
+a.kt-kanal:hover { border-color: var(--kt-blau); background: var(--kt-hell); }
+a.kt-kanal .bi { font-size: 1.25rem; }
+a.kt-kanal-wa .bi { color: #128c4a; }
+a.kt-kanal-li .bi { color: #0a66c2; }
+a.kt-kanal-mail .bi { color: var(--kt-blau-dunkel); }
+.kt-teilen-hinweis { flex: 0 0 100%; margin: 0; font-size: .8125rem; color: var(--kt-grau); }
+@media (max-width: 575.98px) { a.kt-kanal { flex: 1 1 100%; } }
+
+/* ---------- Kopfzeile und oberer Bereich auf dem Handy ---------- */
+.kt-brand .kt-brand-kurz { display: none; }
+@media (max-width: 575.98px) {
+  .kt-main { padding-top: 16px; }
+  .kt-bar { gap: 8px; min-height: 60px; }
+  .kt-brand .kt-brand-lang { display: none; }
+  .kt-brand .kt-brand-kurz { display: inline; }
+  .kt-nav { gap: 8px; }
+  .kt-nav a.kt-nav-cta { min-height: 44px; padding: 0 14px; font-size: .9375rem; animation: none; }
+
+  .kt-hero::before { width: 200px; height: 200px; right: -70px; top: -70px; }
+  .kt-hero::after { width: 180px; height: 180px; }
+  /* Reihenfolge auf dem Handy: Botschaft, Hinweis, Anmeldeknopf, danach die Themen */
+  .kt-hero-main { display: flex; flex-direction: column; }
+  .kt-hero-badge { order: 1; align-self: flex-start; gap: 4px 8px; margin-bottom: 14px; padding: 6px 12px; border-radius: 10px; font-size: .75rem; line-height: 1.3; }
+  .kt-seitentitel { order: 2; margin-bottom: 12px; padding-bottom: 10px; font-size: 1rem; }
+  .kt-hero-slogan { order: 3; margin-bottom: 14px; font-size: 1.875rem; line-height: 1.12; }
+  .kt-hero-text { order: 4; margin-bottom: 18px; font-size: 1rem; line-height: 1.5; }
+  .kt-knapp { order: 5; margin-bottom: 14px; padding: 10px 14px; font-size: .9375rem; }
+  .kt-hero-cta { order: 6; margin-bottom: 20px; gap: 12px; }
+  .kt-zielgruppen { order: 7; gap: 8px; margin: 0; }
+  .kt-zielgruppen li { width: auto; min-height: 40px; padding: 4px 14px 4px 6px; font-size: .875rem; }
+  .kt-zielgruppen .bi { width: 28px; height: 28px; font-size: .875rem; }
+  .kt-hero-cta .kt-btn-outline-light { display: none; }
+  .kt-cta-mikro { gap: 4px 14px; font-size: .875rem; }
+  .kt-countdown { padding: 12px 16px; }
+  .kt-hero-facts li { padding: 12px 14px; }
+  .kt-hero-grid { gap: 20px; }
+}
+/* Tablet und kleine Laptops: Textlinks ausblenden, kurzer Name, damit die Kopfzeile nie überläuft */
+@media (max-width: 1099.98px) {
+  .kt-nav a:not(.kt-nav-cta) { display: none; }
+  .kt-brand .kt-brand-lang { display: none; }
+  .kt-brand .kt-brand-kurz { display: inline; }
+}
+/* Schmale Handys: nur Logo-Symbol, Teilen und Anmelden, nichts wird abgeschnitten */
+@media (max-width: 439.98px) {
+  .kt-brand .kt-brand-kurz { display: none; }
+  .kt-brand .bi { font-size: 1.75rem; }
+  .kt-nav a.kt-nav-cta { padding: 0 14px; }
+}

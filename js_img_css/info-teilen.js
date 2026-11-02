@@ -1,11 +1,15 @@
 /* Einladung teilen: nutzt das Teilen-Menü des Geräts (Web Share API), sonst wird der Link kopiert.
-   Teilen-Knöpfe tragen data-teilen (Kopfzeile und Abschnitt am Ende), der Kopierknopf hat die ID kopieren-knopf.
-   Es wird nichts an Dritte gesendet und nichts gespeichert; geteilt wird immer die öffentliche Adresse der Seite. */
+   Zusätzlich Kanäle per Link (WhatsApp, E-Mail, LinkedIn): Sie öffnen erst nach Klick den jeweiligen Dienst.
+   Teilen-Knöpfe tragen data-teilen (Kopfzeile und Abschnitt am Ende), Kanäle data-kanal, der Kopierknopf hat die ID kopieren-knopf.
+   Es wird nichts an Dritte gesendet und nichts gespeichert; geteilt wird immer die öffentliche Adresse der aktuellen Seite
+   (canonical), Titel und Text stammen aus den og-Angaben der Seite. */
 (function () {
-  var URL_OEFFENTLICH = "https://nosz.github.io/norbert-szpak/info-veranstaltung.html";
+  function meta(name) { var e = document.querySelector('meta[property="' + name + '"]'); return e ? e.content : ""; }
+  var canon = document.querySelector('link[rel="canonical"]');
+  var URL_OEFFENTLICH = canon && canon.href ? canon.href : "https://nosz.github.io/norbert-szpak/info-veranstaltung.html";
   var DATEN = {
-    title: "Infoabend Herzintelligenz und KI",
-    text: "Infoabend am Freitag, 27.11.2026, 20.00 Uhr in Heilbronn-Horkheim: KI einfach erklärt und Herzintelligenz. Vielleicht interessiert dich das auch:",
+    title: meta("og:title") || "Infoabend Herzintelligenz und KI",
+    text: (meta("og:description") || "Infoabend am Freitag, 27.11.2026, 20.00 Uhr in Heilbronn-Horkheim.") + " Vielleicht interessiert dich das auch:",
     url: URL_OEFFENTLICH
   };
   var T = {
@@ -18,6 +22,18 @@
   var kopieren = document.getElementById("kopieren-knopf");
   var status = document.getElementById("teilen-status");
   var toast = document.getElementById("teilen-toast");
+
+  // Kanäle: Adressen werden erst hier gesetzt, damit Titel und Link zur Seite passen
+  var kanaele = {
+    whatsapp: "https://wa.me/?text=" + encodeURIComponent(DATEN.title + "\n" + DATEN.text + "\n" + DATEN.url),
+    mail: "mailto:?subject=" + encodeURIComponent(DATEN.title) + "&body=" + encodeURIComponent(DATEN.text + "\n\n" + DATEN.url),
+    linkedin: "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(DATEN.url)
+  };
+  Array.prototype.forEach.call(document.querySelectorAll("[data-kanal]"), function (a) {
+    var h = kanaele[a.getAttribute("data-kanal")];
+    if (h) a.setAttribute("href", h);
+  });
+
   if (!teilen.length) return;
 
   var toastTimer = null;
