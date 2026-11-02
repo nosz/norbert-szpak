@@ -189,6 +189,12 @@
 .kt-fazit .bi-heart-fill { color: var(--kt-rot); }
 @media (max-width: 767.98px) { .kt-wichtig { grid-template-columns: 1fr; } .kt-wichtig .kt-ziel h3 { font-size: 1.3125rem; } }
 
+/* ---------- Anschließendes Business Netzwerk-Treffen (Hero) ---------- */
+.kt-treffen { display: flex; align-items: center; gap: 12px; width: fit-content; max-width: 100%; margin: 0 0 14px; padding: 12px 18px; border: 1px solid rgba(255,215,94,.55); border-left: 5px solid var(--kt-gold); border-radius: 12px; background: rgba(255,255,255,.12); color: #fff; font-size: 1.0625rem; font-weight: 600; line-height: 1.35; }
+.kt-treffen .bi { flex: none; font-size: 1.5rem; color: var(--kt-gold); }
+.kt-treffen strong { color: var(--kt-gold); }
+@media (max-width: 575.98px) { .kt-treffen { order: 5; width: 100%; padding: 10px 14px; font-size: .9375rem; } }
+
 /* ---------- Teilen: Kanäle ---------- */
 .kt-teilen-kanaele { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 4px 0 0; padding: 16px 0 0; border-top: 1px solid var(--kt-linie); }
 .kt-teilen-kanaele-titel { flex: 0 0 100%; margin: 0; font-size: .875rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--kt-grau); }
