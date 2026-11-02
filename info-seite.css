@@ -1,0 +1,250 @@
+/* Infoabend 1.3: auffälliger Kopf, Zielgruppen, Marketing-Tipps, deutlicher Anmeldeknopf.
+   Lädt nach custom.css und info-veranstaltung.css und überschreibt dort gezielt. */
+:root { --kt-gold: #ffd75e; --kt-gold-dunkel: #ffbf1f; --kt-rot: #ff2d4d; }
+
+/* ---------- Kopfzeile: Anmeldeknopf hervorgehoben ---------- */
+.kt-nav a.kt-nav-cta { gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 12px; background: linear-gradient(180deg, var(--kt-gold) 0%, var(--kt-gold-dunkel) 100%); color: var(--kt-navy); font-weight: 700; box-shadow: 0 0 0 0 rgba(255,215,94,.6); animation: kt-puls 2.4s ease-out infinite; }
+.kt-nav a.kt-nav-cta:hover { background: #fff; color: var(--kt-navy); animation: none; }
+@keyframes kt-puls { 0% { box-shadow: 0 0 0 0 rgba(255,215,94,.55); } 70% { box-shadow: 0 0 0 14px rgba(255,215,94,0); } 100% { box-shadow: 0 0 0 0 rgba(255,215,94,0); } }
+
+/* ---------- Hero ---------- */
+.kt-hero { position: relative; overflow: hidden; isolation: isolate; padding: 56px 48px 48px; border-radius: 24px; background: radial-gradient(1100px 500px at 85% -10%, #3a6bf0 0%, rgba(58,107,240,0) 60%), radial-gradient(700px 420px at -5% 105%, #7a2cff 0%, rgba(122,44,255,0) 60%), linear-gradient(135deg, #0a1530 0%, #14307f 70%, #1b43ad 100%); box-shadow: 0 20px 48px rgba(15,30,61,.35); }
+.kt-hero::before, .kt-hero::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; filter: blur(60px); pointer-events: none; }
+.kt-hero::before { width: 360px; height: 360px; right: -80px; top: -80px; background: rgba(255,45,77,.35); animation: kt-schweben 11s ease-in-out infinite alternate; }
+.kt-hero::after { width: 300px; height: 300px; left: 30%; bottom: -140px; background: rgba(255,215,94,.22); animation: kt-schweben 14s ease-in-out infinite alternate-reverse; }
+@keyframes kt-schweben { from { transform: translate(0,0) scale(1); } to { transform: translate(-40px,30px) scale(1.15); } }
+
+.kt-hero-badge { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 20px; padding: 8px 16px; border: 1px solid rgba(255,215,94,.5); border-radius: 999px; background: rgba(255,215,94,.14); color: var(--kt-gold); font-size: .875rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.kt-hero-badge .bi { font-size: 1rem; }
+.kt-hero-badge .kt-punkt { width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: .7; }
+.kt-seitentitel { margin: 0 0 16px; padding: 0 0 14px; border-bottom: 1px solid rgba(255,255,255,.22); font-size: clamp(1.125rem, 2.6vw, 1.5rem); font-weight: 600; color: #cfdcff; }
+.kt-hero-slogan { max-width: 20ch; margin: 0 0 20px; font-size: clamp(2.125rem, 6vw, 3.75rem); font-weight: 800; line-height: 1.05; letter-spacing: -.02em; }
+.kt-hero-slogan em { display: inline; font-style: normal; background: linear-gradient(90deg, var(--kt-gold) 0%, #ff9d5c 60%, var(--kt-rot) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.kt-hero-text { max-width: 58ch; margin: 0 0 24px; font-size: 1.25rem; line-height: 1.55; color: #e7eeff; }
+.kt-hero-text strong { color: #fff; }
+
+.kt-zielgruppen { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 32px; padding: 0; list-style: none; }
+.kt-zielgruppen li { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 6px 16px 6px 8px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; background: rgba(255,255,255,.1); color: #fff; font-size: .9375rem; font-weight: 600; line-height: 1.25; backdrop-filter: blur(4px); }
+.kt-zielgruppen .bi { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--kt-gold); color: var(--kt-navy); font-size: 1rem; }
+
+/* Der große Anmeldeknopf */
+.kt-hero-cta { align-items: center; gap: 16px 20px; }
+.kt-btn-anmelden { min-height: 64px; padding: 0 36px; border: 0; border-radius: 16px; background: linear-gradient(180deg, var(--kt-gold) 0%, var(--kt-gold-dunkel) 100%); color: var(--kt-navy); font-size: 1.25rem; font-weight: 800; letter-spacing: .01em; box-shadow: 0 10px 28px rgba(255,191,31,.45), 0 0 0 0 rgba(255,215,94,.6); animation: kt-puls 2.4s ease-out infinite; transition: transform .15s, box-shadow .15s; }
+.kt-btn-anmelden:hover { background: #fff; color: var(--kt-navy); transform: translateY(-2px); box-shadow: 0 14px 32px rgba(255,255,255,.35); animation: none; }
+.kt-btn-anmelden .bi { font-size: 1.375rem; }
+.kt-btn-anmelden .kt-pfeil { transition: transform .15s; }
+.kt-btn-anmelden:hover .kt-pfeil { transform: translateX(4px); }
+.kt-hero .kt-btn-anmelden:focus-visible, .kt-cta-band .kt-btn-anmelden:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.kt-cta-mikro { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 16px 0 0; padding: 0; list-style: none; font-size: .9375rem; color: #dbe5ff; }
+.kt-cta-mikro li { display: inline-flex; align-items: center; gap: 8px; }
+.kt-cta-mikro .bi { color: var(--kt-gold); }
+
+.kt-hero-cta .kt-cta-mikro { flex: 0 0 100%; margin: 0; }
+
+/* Rechte Spalte: Countdown und Fakten */
+.kt-hero-grid { grid-template-rows: auto 1fr; }
+.kt-countdown, .kt-hero-facts { align-self: start; }
+.kt-hero-main { grid-column: 1; grid-row: 1 / span 2; }
+.kt-countdown { grid-column: 2; grid-row: 1; }
+.kt-hero-facts { grid-column: 2; grid-row: 2; }
+@media (max-width: 991.98px) { .kt-hero-main, .kt-countdown, .kt-hero-facts { grid-column: 1; grid-row: auto; } }
+.kt-hero-grid { grid-template-columns: minmax(0, 1fr) 340px; gap: 48px; align-items: start; }
+.kt-countdown { margin: 0 0 12px; padding: 18px 20px; border: 1px solid rgba(255,215,94,.55); border-radius: 16px; background: rgba(255,215,94,.12); text-align: center; }
+.kt-countdown[hidden] { display: none; }
+.kt-countdown-label { display: block; margin: 0 0 4px; font-size: .8125rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kt-gold); }
+.kt-countdown-zahl { display: block; font-size: 3rem; font-weight: 800; line-height: 1; color: #fff; font-variant-numeric: tabular-nums; }
+.kt-countdown-einheit { display: block; margin-top: 4px; font-size: 1rem; font-weight: 600; color: #fff; }
+.kt-hero-facts { gap: 10px; }
+.kt-hero-facts li { padding: 14px 18px; }
+.kt-hero-facts .bi { font-size: 1.5rem; }
+@media (max-width: 991.98px) {
+  .kt-hero { padding: 40px 28px 32px; }
+  .kt-hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .kt-countdown { display: flex; align-items: baseline; justify-content: center; flex-wrap: wrap; gap: 4px 10px; }
+  .kt-countdown-label, .kt-countdown-zahl, .kt-countdown-einheit { display: inline; margin: 0; }
+  .kt-countdown-zahl { font-size: 2.25rem; }
+}
+@media (max-width: 575.98px) {
+  .kt-hero { padding: 28px 18px 24px; border-radius: 18px; }
+  .kt-hero-slogan { max-width: none; }
+  .kt-hero-text { font-size: 1.0625rem; }
+  .kt-btn-anmelden { width: 100%; min-height: 60px; padding: 0 20px; font-size: 1.125rem; }
+  .kt-zielgruppen li { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kt-hero::before, .kt-hero::after, .kt-btn-anmelden, .kt-nav a.kt-nav-cta { animation: none; }
+  .kt-btn-anmelden, .kt-btn-anmelden .kt-pfeil { transition: none; }
+}
+
+/* ---------- Vertrauensleiste ---------- */
+.kt-vorteile { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0 0 8px; padding: 0; list-style: none; }
+.kt-vorteile li { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 12px 16px; border: 1px solid var(--kt-linie); border-radius: 14px; background: #fff; font-weight: 600; line-height: 1.3; box-shadow: 0 1px 3px rgba(15,30,61,.06); }
+.kt-vorteile .bi { flex: none; font-size: 1.5rem; color: var(--kt-blau); }
+@media (max-width: 991.98px) { .kt-vorteile { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 479.98px) { .kt-vorteile { grid-template-columns: 1fr; } }
+
+/* ---------- Abschnittsköpfe ---------- */
+.kt-eyebrow { margin: 48px 0 8px; font-size: .8125rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--kt-blau-dunkel); }
+.kt-eyebrow + .kt-h2 { margin-top: 0; }
+
+/* ---------- Zielgruppen-Karten ---------- */
+.kt-ziele { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.kt-ziel { position: relative; display: flex; flex-direction: column; padding: 28px 24px 24px; border: 1px solid var(--kt-linie); border-top: 6px solid var(--kt-blau); border-radius: 16px; background: #fff; box-shadow: 0 4px 16px rgba(15,30,61,.08); }
+.kt-ziel:nth-child(2) { border-top-color: #7a2cff; }
+.kt-ziel:nth-child(3) { border-top-color: #e0245e; }
+.kt-ziel .kt-icon { width: 56px; height: 56px; font-size: 1.75rem; }
+.kt-ziel-fuer { margin: 0 0 4px; font-size: .8125rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kt-blau-dunkel); }
+.kt-ziel h3 { margin: 0 0 8px; font-size: 1.375rem; font-weight: 700; line-height: 1.25; }
+.kt-ziel > p { margin: 0 0 16px; color: var(--kt-grau); }
+.kt-ziel .kt-haken { margin: 0 0 20px; }
+.kt-ziel-link { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 700; text-decoration: none; }
+.kt-ziel-link:hover { text-decoration: underline; }
+@media (max-width: 991.98px) { .kt-ziele { grid-template-columns: 1fr; } }
+
+/* ---------- Marketing-Tipps ---------- */
+.kt-tipps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: tipp; }
+.kt-tipp { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 24px 22px 20px; border: 1px solid var(--kt-linie); border-radius: 16px; background: #fff; box-shadow: 0 1px 3px rgba(15,30,61,.06); counter-increment: tipp; }
+.kt-tipp::before { content: counter(tipp); display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: var(--kt-navy); color: var(--kt-gold); font-size: 1.25rem; font-weight: 800; }
+.kt-tipp h3 { margin: 4px 0 0; font-size: 1.1875rem; font-weight: 700; line-height: 1.3; }
+.kt-tipp p { margin: 0; color: var(--kt-grau); }
+.kt-tipp .kt-mitki { margin-top: auto; padding: 10px 12px; border-radius: 10px; background: var(--kt-hell); color: var(--kt-navy); font-size: .9375rem; line-height: 1.45; }
+.kt-tipp .kt-mitki strong { color: var(--kt-blau-dunkel); }
+.kt-bonus { display: flex; align-items: flex-start; gap: 16px; margin-top: 16px; padding: 20px 24px; border-radius: 16px; background: linear-gradient(135deg, #0f1e3d 0%, #1b43ad 100%); color: #fff; }
+.kt-bonus > .bi { flex: none; font-size: 2rem; color: var(--kt-gold); }
+.kt-bonus h3 { margin: 0 0 4px; font-size: 1.1875rem; font-weight: 700; }
+.kt-bonus p { margin: 0; color: #dbe5ff; }
+.kt-bonus small { display: block; margin-top: 8px; color: #b9c8f0; }
+.kt-marketing-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 20px; padding: 20px 24px; border: 2px dashed var(--kt-blau); border-radius: 16px; background: #fff; }
+.kt-marketing-cta p { margin: 0; max-width: 56ch; font-size: 1.125rem; font-weight: 600; }
+@media (max-width: 991.98px) { .kt-tipps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 639.98px) { .kt-tipps { grid-template-columns: 1fr; } .kt-bonus { flex-direction: column; } .kt-marketing-cta .kt-btn { width: 100%; } }
+
+/* ---------- Landingpage Selbständige: Automatisierungs-Karten und Schritte ---------- */
+.kt-auto { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.kt-auto-karte { display: flex; flex-direction: column; padding: 24px 20px; border: 1px solid var(--kt-linie); border-top: 5px solid var(--kt-blau); border-radius: 16px; background: #fff; box-shadow: 0 2px 10px rgba(15,30,61,.07); }
+.kt-auto-idee { border-top-color: #7a2cff; }
+.kt-auto-karte h3 { margin: 0 0 8px; font-size: 1.1875rem; font-weight: 700; line-height: 1.3; }
+.kt-auto-karte > p { margin: 0 0 14px; color: var(--kt-grau); }
+.kt-auto-karte .kt-haken { margin-top: auto; gap: 8px; font-size: .9375rem; }
+.kt-bonus-titel { margin: 0 0 4px; font-size: 1.1875rem; font-weight: 700; }
+.kt-tipps.kt-schritte { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1099.98px) { .kt-auto { grid-template-columns: repeat(2, 1fr); } .kt-tipps.kt-schritte { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 639.98px) { .kt-auto, .kt-tipps.kt-schritte { grid-template-columns: 1fr; } }
+
+/* ---------- Plätze knapp und Business Meeting ---------- */
+.kt-knapp { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 20px; padding: 10px 18px; border: 1px solid #ff8a9b; border-radius: 12px; background: rgba(255,45,77,.2); color: #fff; font-weight: 700; line-height: 1.35; }
+.kt-knapp .bi { flex: none; font-size: 1.25rem; color: #ffb3bf; }
+.kt-knapp-hell { margin: 0 0 16px; border-color: #f2a3ad; background: #fff0f2; color: #8c1d18; }
+.kt-knapp-hell .bi { color: #b3261e; }
+.kt-netzwerk { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 20px; align-items: start; margin-top: 16px; padding: 24px; border: 2px solid var(--kt-blau); border-radius: 16px; background: linear-gradient(135deg, #f3f7ff 0%, #fff 70%); box-shadow: 0 4px 16px rgba(37,87,214,.12); }
+.kt-netzwerk .kt-icon { grid-row: 1 / span 2; margin: 0; width: 56px; height: 56px; font-size: 1.75rem; }
+.kt-netzwerk h3 { margin: 0; font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+.kt-netzwerk p { margin: 0; color: var(--kt-grau); }
+.kt-netzwerk .kt-haken { grid-column: 2; margin-top: 8px; }
+@media (max-width: 575.98px) { .kt-netzwerk { grid-template-columns: 1fr; } .kt-netzwerk .kt-icon { grid-row: auto; } .kt-netzwerk .kt-haken { grid-column: 1; } .kt-knapp { width: 100%; } }
+
+/* ---------- Abschlussband vor dem Formular ---------- */
+.kt-cta-band { position: relative; overflow: hidden; isolation: isolate; margin: 48px 0 0; padding: 40px 32px; border-radius: 24px; text-align: center; color: #fff; background: radial-gradient(700px 300px at 50% -20%, #3a6bf0 0%, rgba(58,107,240,0) 70%), linear-gradient(135deg, #0a1530 0%, #14307f 100%); box-shadow: 0 16px 40px rgba(15,30,61,.3); }
+.kt-cta-band h2 { margin: 0 0 8px; font-size: clamp(1.625rem, 4.5vw, 2.5rem); font-weight: 800; line-height: 1.15; }
+.kt-cta-band h2 em { font-style: normal; color: var(--kt-gold); }
+.kt-cta-band p { margin: 0 auto 24px; max-width: 56ch; font-size: 1.125rem; color: #dbe5ff; }
+.kt-cta-band .kt-cta-mikro { justify-content: center; }
+@media (max-width: 575.98px) { .kt-cta-band { padding: 28px 18px; border-radius: 18px; } }
+
+/* ---------- Anmeldeformular ---------- */
+#anmeldung-bereich { scroll-margin-top: 80px; }
+#anmeldung { position: relative; padding: 28px; border: 2px solid var(--kt-blau); border-radius: 20px; background: #fff; box-shadow: 0 0 0 6px rgba(37,87,214,.12), 0 16px 40px rgba(15,30,61,.14); }
+#senden.kt-btn { width: 100%; min-height: 64px; border: 0; border-radius: 16px; background: linear-gradient(180deg, var(--kt-gold) 0%, var(--kt-gold-dunkel) 100%); color: var(--kt-navy); font-size: 1.25rem; font-weight: 800; box-shadow: 0 10px 24px rgba(255,191,31,.4); }
+#senden.kt-btn:hover { background: var(--kt-navy); color: #fff; }
+#senden.kt-btn:disabled { background: #c9cfdd; color: #4a5468; box-shadow: none; }
+#senden.kt-btn .bi { font-size: 1.375rem; }
+.kt-form-mikro { margin: 10px 0 0; text-align: center; font-size: .875rem; color: var(--kt-grau); }
+.kt-form-mikro .bi { color: var(--kt-ok); }
+
+/* ---------- Feste Anmeldeleiste auf dem Handy ---------- */
+.kt-sticky { display: none; }
+@media (max-width: 767.98px) {
+  .kt-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 150; display: flex; align-items: center; gap: 12px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--kt-navy); box-shadow: 0 -4px 16px rgba(15,30,61,.35); transform: translateY(110%); transition: transform .25s; }
+  .kt-sticky.kt-sticky-an { transform: translateY(0); }
+  .kt-sticky-text { flex: 1 1 auto; min-width: 0; font-size: .875rem; line-height: 1.25; color: #dbe5ff; }
+  .kt-sticky-text strong { display: block; color: #fff; font-size: .9375rem; }
+  .kt-sticky .kt-btn-anmelden { flex: none; width: auto; min-height: 48px; padding: 0 20px; border-radius: 12px; font-size: 1rem; animation: none; box-shadow: none; }
+  .kt-footer { padding-bottom: 72px; }
+  .kt-toast { bottom: 88px; }
+}
+@media (prefers-reduced-motion: reduce) { .kt-sticky { transition: none; } }
+
+/* ---------- Hervorgehobene Karte: Übersicht über alles ---------- */
+.kt-auto-breit { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 1.2fr) minmax(0, 1fr); gap: 8px 24px; align-items: center; border-top-color: #e0245e; background: linear-gradient(135deg, #fff 0%, #f3f7ff 100%); }
+.kt-auto-breit .kt-icon { margin: 0; width: 64px; height: 64px; font-size: 2rem; }
+.kt-auto-breit h3 { font-size: 1.375rem; }
+.kt-auto-breit > div > p { margin: 0; color: var(--kt-grau); }
+.kt-auto-breit .kt-haken { margin: 0; }
+@media (max-width: 1099.98px) { .kt-auto-breit { grid-template-columns: 1fr; } .kt-auto-breit .kt-icon { width: 56px; height: 56px; font-size: 1.75rem; } }
+
+/* ---------- Wieder Zeit für das Wichtige ---------- */
+.kt-wichtig { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.kt-wichtig .kt-ziel h3 { font-size: 1.5rem; }
+.kt-wichtig .kt-ziel > p { font-size: 1.0625rem; }
+.kt-fazit .bi-heart-fill { color: var(--kt-rot); }
+@media (max-width: 767.98px) { .kt-wichtig { grid-template-columns: 1fr; } .kt-wichtig .kt-ziel h3 { font-size: 1.3125rem; } }
+
+/* ---------- Anschließendes Business Netzwerk-Treffen (Hero) ---------- */
+.kt-treffen { display: flex; align-items: center; gap: 12px; width: fit-content; max-width: 100%; margin: 0 0 14px; padding: 12px 18px; border: 1px solid rgba(255,215,94,.55); border-left: 5px solid var(--kt-gold); border-radius: 12px; background: rgba(255,255,255,.12); color: #fff; font-size: 1.0625rem; font-weight: 600; line-height: 1.35; }
+.kt-treffen .bi { flex: none; font-size: 1.5rem; color: var(--kt-gold); }
+.kt-treffen strong { color: var(--kt-gold); }
+@media (max-width: 575.98px) { .kt-treffen { order: 5; width: 100%; padding: 10px 14px; font-size: .9375rem; } }
+
+/* ---------- Teilen: Kanäle ---------- */
+.kt-teilen-kanaele { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 4px 0 0; padding: 16px 0 0; border-top: 1px solid var(--kt-linie); }
+.kt-teilen-kanaele-titel { flex: 0 0 100%; margin: 0; font-size: .875rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--kt-grau); }
+a.kt-kanal { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 20px; border: 1px solid var(--kt-linie); border-radius: 12px; background: #fff; color: var(--kt-navy); font-weight: 600; text-decoration: none; }
+a.kt-kanal:hover { border-color: var(--kt-blau); background: var(--kt-hell); }
+a.kt-kanal .bi { font-size: 1.25rem; }
+a.kt-kanal-wa .bi { color: #128c4a; }
+a.kt-kanal-li .bi { color: #0a66c2; }
+a.kt-kanal-mail .bi { color: var(--kt-blau-dunkel); }
+.kt-teilen-hinweis { flex: 0 0 100%; margin: 0; font-size: .8125rem; color: var(--kt-grau); }
+@media (max-width: 575.98px) { a.kt-kanal { flex: 1 1 100%; } }
+
+/* ---------- Kopfzeile und oberer Bereich auf dem Handy ---------- */
+.kt-brand .kt-brand-kurz { display: none; }
+@media (max-width: 575.98px) {
+  .kt-main { padding-top: 16px; }
+  .kt-bar { gap: 8px; min-height: 60px; }
+  .kt-brand .kt-brand-lang { display: none; }
+  .kt-brand .kt-brand-kurz { display: inline; }
+  .kt-nav { gap: 8px; }
+  .kt-nav a.kt-nav-cta { min-height: 44px; padding: 0 14px; font-size: .9375rem; animation: none; }
+
+  .kt-hero::before { width: 200px; height: 200px; right: -70px; top: -70px; }
+  .kt-hero::after { width: 180px; height: 180px; }
+  /* Reihenfolge auf dem Handy: Botschaft, Hinweis, Anmeldeknopf, danach die Themen */
+  .kt-hero-main { display: flex; flex-direction: column; }
+  .kt-hero-badge { order: 1; align-self: flex-start; gap: 4px 8px; margin-bottom: 14px; padding: 6px 12px; border-radius: 10px; font-size: .75rem; line-height: 1.3; }
+  .kt-seitentitel { order: 2; margin-bottom: 12px; padding-bottom: 10px; font-size: 1rem; }
+  .kt-hero-slogan { order: 3; margin-bottom: 14px; font-size: 1.875rem; line-height: 1.12; }
+  .kt-hero-text { order: 4; margin-bottom: 18px; font-size: 1rem; line-height: 1.5; }
+  .kt-knapp { order: 5; margin-bottom: 14px; padding: 10px 14px; font-size: .9375rem; }
+  .kt-hero-cta { order: 6; margin-bottom: 20px; gap: 12px; }
+  .kt-zielgruppen { order: 7; gap: 8px; margin: 0; }
+  .kt-zielgruppen li { width: auto; min-height: 40px; padding: 4px 14px 4px 6px; font-size: .875rem; }
+  .kt-zielgruppen .bi { width: 28px; height: 28px; font-size: .875rem; }
+  .kt-hero-cta .kt-btn-outline-light { display: none; }
+  .kt-cta-mikro { gap: 4px 14px; font-size: .875rem; }
+  .kt-countdown { padding: 12px 16px; }
+  .kt-hero-facts li { padding: 12px 14px; }
+  .kt-hero-grid { gap: 20px; }
+}
+/* Tablet und kleine Laptops: Textlinks ausblenden, kurzer Name, damit die Kopfzeile nie überläuft */
+@media (max-width: 1099.98px) {
+  .kt-nav a:not(.kt-nav-cta) { display: none; }
+  .kt-brand .kt-brand-lang { display: none; }
+  .kt-brand .kt-brand-kurz { display: inline; }
+}
+/* Schmale Handys: nur Logo-Symbol, Teilen und Anmelden, nichts wird abgeschnitten */
+@media (max-width: 439.98px) {
+  .kt-brand .kt-brand-kurz { display: none; }
+  .kt-brand .bi { font-size: 1.75rem; }
+  .kt-nav a.kt-nav-cta { padding: 0 14px; }
+}
