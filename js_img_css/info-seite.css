@@ -248,3 +248,20 @@ a.kt-kanal-mail .bi { color: var(--kt-blau-dunkel); }
   .kt-brand .bi { font-size: 1.75rem; }
   .kt-nav a.kt-nav-cta { padding: 0 14px; }
 }
+
+/* Herzintelligenz-Seite (Unternehmer), Version 2.1.0 */
+.kt-wichtig.kt-wichtig-3 { grid-template-columns: repeat(3, 1fr); }
+.kt-wichtig-3 .kt-ziel h3 { font-size: 1.3125rem; }
+.kt-wichtig-3 .kt-ziel > p { font-size: 1rem; }
+@media (max-width: 991.98px) { .kt-wichtig.kt-wichtig-3 { grid-template-columns: 1fr; } }
+.kt-tipps.kt-ki-schritte { margin-top: 20px; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 767.98px) { .kt-tipps.kt-ki-schritte { grid-template-columns: 1fr; } }
+.kt-auto.kt-auto-vier { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1099.98px) { .kt-auto.kt-auto-vier { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 639.98px) { .kt-auto.kt-auto-vier { grid-template-columns: 1fr; } }
+.kt-neugier { padding: 28px 28px 24px; border-left: 6px solid #e0245e; background: linear-gradient(135deg, #fff 0%, #fff4f7 100%); }
+.kt-neugier-liste { display: grid; gap: 16px; margin: 0 0 20px; padding: 0; list-style: none; }
+.kt-neugier-liste li { display: flex; align-items: flex-start; gap: 14px; font-size: 1.1875rem; font-weight: 600; line-height: 1.45; color: var(--kt-navy); }
+.kt-neugier-liste .bi { flex: none; font-size: 1.75rem; line-height: 1; color: #e0245e; }
+.kt-neugier-schluss { margin: 0; padding-top: 16px; border-top: 1px solid var(--kt-linie); font-size: 1.0625rem; font-weight: 700; color: var(--kt-blau-dunkel); }
+@media (max-width: 575.98px) { .kt-neugier { padding: 20px 18px; } .kt-neugier-liste li { font-size: 1.0625rem; } }
