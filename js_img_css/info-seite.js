@@ -1,6 +1,13 @@
-/* Infoabend: Countdown bis zum Termin und feste Anmeldeleiste (nur Handy).
+﻿/* Infoabend: Countdown bis zum Termin und feste Anmeldeleiste (nur Handy).
    Keine Cookies, keine Speicherung, keine Fremdserver. Ohne JavaScript bleibt die Seite voll nutzbar. */
 (function () {
+  // Menü (Handy): nach Klick auf einen Eintrag schließen, ebenso mit Escape oder Klick daneben
+  var menue = document.querySelector(".kt-menue");
+  if (menue) {
+    menue.addEventListener("click", function (e) { if (e.target.closest && e.target.closest(".kt-menue-liste a")) menue.open = false; });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && menue.open) { menue.open = false; menue.querySelector("summary").focus(); } });
+    document.addEventListener("click", function (e) { if (menue.open && !menue.contains(e.target)) menue.open = false; });
+  }
   // Beginn des Infoabends: Freitag, 27.11.2026, 20.00 Uhr (Winterzeit, UTC+1)
   var START = new Date("2026-11-27T20:00:00+01:00").getTime();
 

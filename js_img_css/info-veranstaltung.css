@@ -1,4 +1,4 @@
-/* Infoabend: Ergänzungen zu custom.css (Herz-Symbol im Wort, Zeitangabe der Programmpunkte). */
+﻿/* Infoabend: Ergänzungen zu custom.css (Herz-Symbol im Wort, Zeitangabe der Programmpunkte). */
 .kt-herz { margin: 0 .1em; color: #d90429; font-size: .9em; vertical-align: -.05em; }
 .kt-zeit { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: .9375rem; font-weight: 600; color: var(--kt-blau-dunkel); }
 .kt-hero-facts a.kt-hero-link { color: #fff; }
@@ -126,3 +126,20 @@ i.bi-heart, i.bi-heart-fill, i.bi-heart-pulse, i.bi-person-heart { color: #d9042
 /* Logo: Herz mit vier Kammern, in jeder das Teilen-Symbol */
 .kt-brand img.kt-logo { flex: none; width: 44px; height: 44px; }
 @media (max-width: 575.98px) { .kt-brand img.kt-logo { width: 38px; height: 38px; } }
+
+/* Men� auf Handy und Tablet: Textlinks sind dort ausgeblendet, deshalb Men�-Knopf mit Ausklapp-Liste (ohne JavaScript nutzbar) */
+.kt-menue { display: none; }
+@media (max-width: 1099.98px) {
+  .kt-menue { display: block; }
+  .kt-menue > summary { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; min-width: 44px; padding: 0 12px; border: 1px solid rgba(255,255,255,.45); border-radius: 10px; background: transparent; color: #fff; font-size: 1rem; font-weight: 600; line-height: 1.2; list-style: none; cursor: pointer; justify-content: center; }
+  .kt-menue > summary::-webkit-details-marker { display: none; }
+  .kt-menue > summary .bi { font-size: 1.5rem; }
+  .kt-menue[open] > summary { background: #fff; color: var(--kt-navy); }
+  .kt-menue > summary:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  .kt-menue-liste { position: absolute; left: 0; right: 0; top: 100%; display: grid; gap: 2px; max-height: calc(100vh - 64px); overflow-y: auto; padding: 8px 16px 16px; background: var(--kt-navy); border-top: 1px solid rgba(255,255,255,.2); box-shadow: 0 12px 24px rgba(15,30,61,.4); }
+  .kt-header .kt-nav .kt-menue-liste a { display: flex; min-height: 52px; padding: 0 16px; border-radius: 10px; color: #fff; font-size: 1.0625rem; font-weight: 600; white-space: normal; }
+  .kt-header .kt-nav .kt-menue-liste a:hover, .kt-header .kt-nav .kt-menue-liste a:focus-visible { background: rgba(255,255,255,.14); }
+}
+@media (max-width: 575.98px) { .kt-menue > summary .kt-menue-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } .kt-menue > summary { padding: 0; width: 44px; } }
+
+.kt-nav a[aria-current="page"] { background: rgba(255,255,255,.16); color: #fff; }
