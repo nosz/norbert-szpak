@@ -143,3 +143,10 @@ i.bi-heart, i.bi-heart-fill, i.bi-heart-pulse, i.bi-person-heart { color: #d9042
 @media (max-width: 575.98px) { .kt-menue > summary .kt-menue-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } .kt-menue > summary { padding: 0; width: 44px; } }
 
 .kt-nav a[aria-current="page"] { background: rgba(255,255,255,.16); color: #fff; }
+
+/* Hinweis: Schulungen für Unternehmen (unten auf den Seiten) */
+.kt-schulung { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px 20px; align-items: center; margin-top: 24px; border-color: #cfd8ee; background: #fff; }
+.kt-schulung .kt-icon { margin: 0; }
+.kt-schulung .kt-card-title { margin-bottom: 4px; }
+.kt-schulung .kt-card-text { margin: 0; }
+@media (max-width: 767.98px) { .kt-schulung { grid-template-columns: 1fr; } .kt-schulung .kt-btn { width: 100%; justify-content: center; } }
