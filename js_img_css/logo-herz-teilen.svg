@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+<defs>
+<clipPath id="h"><path id="hp" d="M32 58 C8 41 3 26 3 18.500 C3 9.500 10 4 17.500 4 C24 4 29 7.500 32 12.500 C35 7.500 40 4 46.500 4 C54 4 61 9.500 61 18.500 C61 26 56 41 32 58 Z"/></clipPath>
+<g id="s" fill="none" stroke="#d90429" stroke-width="1.400" stroke-linecap="round">
+<path d="M-4.200 0 L4.200 -4.600 M-4.200 0 L4.200 4.600"/>
+<g fill="#d90429" stroke="none"><circle cx="-4.200" cy="0" r="2.600"/><circle cx="4.200" cy="-4.600" r="2.600"/><circle cx="4.200" cy="4.600" r="2.600"/></g>
+</g>
+</defs>
+<use href="#hp" fill="#fff"/>
+<g clip-path="url(#h)" stroke="#d90429" stroke-width="2" stroke-linecap="round">
+<path d="M32 12 V60 M0 31 H64"/>
+</g>
+<use href="#hp" fill="none" stroke="#d90429" stroke-width="3.200" stroke-linejoin="round"/>
+<use href="#s" transform="translate(17.500 18.500) rotate(0)"/>
+<use href="#s" transform="translate(46.500 18.500) rotate(90)"/>
+<use href="#s" transform="translate(23 40) scale(.9) rotate(270)"/>
+<use href="#s" transform="translate(41 40) scale(.9) rotate(180)"/>
+</svg>
