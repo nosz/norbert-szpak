@@ -1,11 +1,11 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="t d">
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="t d">
 <title id="t">Ein Team aus KI-Agenten</title>
-<desc id="d">Vier freundliche Roboter-Agenten mit eigenen Rollen (Ordnung, Support, Schreiben, Prüfen) arbeiten rund um einen Menschen in der Mitte, der die Richtung vorgibt.</desc>
-<defs><clipPath id="c"><rect width="800" height="400" rx="24"/></clipPath>
+<desc id="d">Fünf freundliche Roboter-Agenten mit eigenen Rollen und Symbolen (Otto für Ordnung mit Ordner, Beni für Support mit Sprechblase, Nicoletta zum Schreiben mit Dokument, Claudia zum Prüfen mit Lupe) und Willi, der Webseitenexperte, arbeiten rund um einen Menschen in der Mitte, der die Richtung vorgibt.</desc>
+<defs><clipPath id="c"><rect width="800" height="480" rx="24"/></clipPath>
 <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1530"/><stop offset="1" stop-color="#1b43ad"/></linearGradient>
-<style>.l{stroke:#ffd75e;stroke-width:3;stroke-dasharray:6 8;fill:none}.k{font:700 17px system-ui,Segoe UI,sans-serif;fill:#fff;text-anchor:middle}.s{font:500 13px system-ui,Segoe UI,sans-serif;fill:#cfdcff;text-anchor:middle}</style>
+<style>.l{stroke:#ffd75e;stroke-width:3;stroke-dasharray:6 8;fill:none}.k{font:700 17px system-ui,Segoe UI,sans-serif;fill:#fff;text-anchor:middle}.s{font:500 13px system-ui,Segoe UI,sans-serif;fill:#cfdcff;text-anchor:middle}.g{fill:#ffd75e}.t{font:600 13px system-ui,Segoe UI,sans-serif;fill:#ffd75e;text-anchor:middle}</style>
 </defs>
-<rect width="800" height="400" rx="24" fill="url(#bg)"/>
+<rect width="800" height="480" rx="24" fill="url(#bg)"/>
 <g clip-path="url(#c)"><circle cx="90" cy="60" r="60" fill="#7a2cff" opacity=".25"/><circle cx="720" cy="330" r="80" fill="#ff2d4d" opacity=".2"/></g>
 <!-- Verbindungen -->
 <path class="l" d="M165 130 Q280 150 355 180"/><path class="l" d="M165 280 Q280 250 355 215"/>
@@ -14,13 +14,24 @@
 <circle cx="400" cy="195" r="52" fill="#fff"/>
 <circle cx="400" cy="178" r="16" fill="#0f1e3d"/><path d="M370 226 Q400 190 430 226 Z" fill="#0f1e3d"/>
 <path d="M400 128 c-6-10-22-6-22 6 0 10 12 16 22 24 10-8 22-14 22-24 0-12-16-16-22-6z" fill="#d90429" transform="translate(0 -8) scale(.9) translate(44 0)"/>
-<text class="k" x="400" y="275">Du: gibst die Richtung vor</text>
-<!-- Agent 1 -->
-<g transform="translate(60 52)"><rect x="0" y="0" width="110" height="90" rx="22" fill="#fff"/><rect x="14" y="20" width="82" height="42" rx="14" fill="#14307f"/><circle cx="37" cy="41" r="7" fill="#ffd75e"/><circle cx="73" cy="41" r="7" fill="#ffd75e"/><path d="M41 54 q14 8 28 0" stroke="#ffd75e" stroke-width="3" fill="none" stroke-linecap="round"/><line x1="55" y1="0" x2="55" y2="-14" stroke="#fff" stroke-width="4"/><circle cx="55" cy="-18" r="6" fill="#ff2d4d"/><text class="k" x="55" y="118">Ordnungs-Agent</text><text class="s" x="55" y="138">hält alles sauber</text></g>
-<!-- Agent 2 -->
-<g transform="translate(60 236)"><rect x="0" y="0" width="110" height="90" rx="22" fill="#fff"/><rect x="14" y="20" width="82" height="42" rx="14" fill="#2557d6"/><rect x="31" y="34" width="14" height="14" rx="4" fill="#ffd75e"/><rect x="65" y="34" width="14" height="14" rx="4" fill="#ffd75e"/><path d="M41 54 h28" stroke="#ffd75e" stroke-width="3" stroke-linecap="round"/><line x1="55" y1="0" x2="55" y2="-14" stroke="#fff" stroke-width="4"/><circle cx="55" cy="-18" r="6" fill="#ffd75e"/><text class="k" x="55" y="118">Support-Agent</text><text class="s" x="55" y="138">beantwortet Fragen</text></g>
-<!-- Agent 3 -->
-<g transform="translate(630 52)"><rect x="0" y="0" width="110" height="90" rx="22" fill="#fff"/><rect x="14" y="20" width="82" height="42" rx="14" fill="#7a2cff"/><circle cx="37" cy="41" r="7" fill="#ffd75e"/><circle cx="73" cy="41" r="7" fill="#ffd75e"/><path d="M41 52 q14 12 28 0" stroke="#ffd75e" stroke-width="3" fill="none" stroke-linecap="round"/><line x1="55" y1="0" x2="55" y2="-14" stroke="#fff" stroke-width="4"/><circle cx="55" cy="-18" r="6" fill="#ff2d4d"/><text class="k" x="55" y="118">Schreib-Agent</text><text class="s" x="55" y="138">formuliert Texte</text></g>
-<!-- Agent 4 -->
-<g transform="translate(630 236)"><rect x="0" y="0" width="110" height="90" rx="22" fill="#fff"/><rect x="14" y="20" width="82" height="42" rx="14" fill="#0f1e3d"/><rect x="29" y="35" width="18" height="12" rx="6" fill="#ffd75e"/><rect x="63" y="35" width="18" height="12" rx="6" fill="#ffd75e"/><path d="M41 54 q14 6 28 0" stroke="#ffd75e" stroke-width="3" fill="none" stroke-linecap="round"/><line x1="55" y1="0" x2="55" y2="-14" stroke="#fff" stroke-width="4"/><circle cx="55" cy="-18" r="6" fill="#ffd75e"/><text class="k" x="55" y="118">Prüf-Agent</text><text class="s" x="55" y="138">kontrolliert Ergebnisse</text></g>
+<text class="k" x="400" y="98">Du: gibst die Richtung vor</text>
+<!-- Otto: Ordnung, Ordner -->
+<g transform="translate(60 52)"><rect width="110" height="90" rx="22" fill="#fff"/><rect x="14" y="20" width="82" height="42" rx="14" fill="#14307f"/>
+<path class="g" d="M38 31 h11 l4 4 h19 a2 2 0 0 1 2 2 v15 a2 2 0 0 1 -2 2 h-34 a2 2 0 0 1 -2 -2 v-19 a2 2 0 0 1 2 -2 z"/><path d="M38 40 h34" stroke="#14307f" stroke-width="2"/>
+<line x1="55" y1="0" x2="55" y2="-14" stroke="#fff" stroke-width="4"/><circle cx="55" cy="-18" r="6" fill="#ff2d4d"/><text class="k" x="55" y="118">Otto</text><text class="s" x="55" y="138">Ordnungs-Agent</text><text class="t" x="55" y="156">Hält Ordnung in Dateien</text></g>
+<!-- Beni: Support, Sprechblase -->
+<g transform="translate(60 236)"><rect width="110" height="90" rx="22" fill="#fff"/><rect x="14" y="20" width="82" height="42" rx="14" fill="#2557d6"/>
+<path class="g" d="M40 28 h30 a3 3 0 0 1 3 3 v14 a3 3 0 0 1 -3 3 h-14 l-8 7 v-7 h-8 a3 3 0 0 1 -3 -3 v-14 a3 3 0 0 1 3 -3 z"/><circle cx="47" cy="38" r="2.200" fill="#2557d6"/><circle cx="55" cy="38" r="2.200" fill="#2557d6"/><circle cx="63" cy="38" r="2.200" fill="#2557d6"/>
+<line x1="55" y1="0" x2="55" y2="-14" stroke="#fff" stroke-width="4"/><circle cx="55" cy="-18" r="6" fill="#ffd75e"/><text class="k" x="55" y="118">Beni</text><text class="s" x="55" y="138">Support-Agent</text><text class="t" x="55" y="156">Beantwortet Kundenfragen schnell</text></g>
+<!-- Nicoletta: Schreiben, Dokument -->
+<g transform="translate(630 52)"><rect width="110" height="90" rx="22" fill="#fff"/><rect x="14" y="20" width="82" height="42" rx="14" fill="#7a2cff"/>
+<path class="g" d="M43 28 h15 l9 9 v19 a2 2 0 0 1 -2 2 h-22 a2 2 0 0 1 -2 -2 v-26 a2 2 0 0 1 2 -2 z"/><path d="M58 28 v9 h9" fill="#e9b800"/><path d="M47 43 h16 M47 48 h16 M47 53 h10" stroke="#7a2cff" stroke-width="2" stroke-linecap="round"/>
+<line x1="55" y1="0" x2="55" y2="-14" stroke="#fff" stroke-width="4"/><circle cx="55" cy="-18" r="6" fill="#ff2d4d"/><text class="k" x="55" y="118">Nicoletta</text><text class="s" x="55" y="138">Schreib-Agent</text><text class="t" x="55" y="156">Schreibt Angebote und Texte</text></g>
+<!-- Claudia: Prüfen, Lupe mit Haken -->
+<g transform="translate(630 236)"><rect width="110" height="90" rx="22" fill="#fff"/><rect x="14" y="20" width="82" height="42" rx="14" fill="#0f1e3d"/>
+<circle cx="52" cy="39" r="10" fill="none" stroke="#ffd75e" stroke-width="3.500"/><path d="M60 47 l9 9" stroke="#ffd75e" stroke-width="4.500" stroke-linecap="round"/><path d="M47 39 l4 4 l7 -8" fill="none" stroke="#ffd75e" stroke-width="2.800" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="55" y1="0" x2="55" y2="-14" stroke="#fff" stroke-width="4"/><circle cx="55" cy="-18" r="6" fill="#ffd75e"/><text class="k" x="55" y="118">Claudia</text><text class="s" x="55" y="138">Prüf-Agent</text><text class="t" x="55" y="156">Prüft Ergebnisse auf Fehler</text></g>
+<!-- Willi, Webseitenexperte -->
+<path class="l" d="M400 276 V250"/>
+<g transform="translate(345 300)"><rect width="110" height="90" rx="22" fill="#fff"/><rect x="12" y="14" width="86" height="54" rx="10" fill="#14307f"/><rect x="12" y="14" width="86" height="14" rx="10" fill="#e0245e"/><rect x="12" y="22" width="86" height="6" fill="#e0245e"/><circle cx="21" cy="21" r="2.500" fill="#fff"/><circle cx="29" cy="21" r="2.500" fill="#fff"/><circle cx="37" cy="21" r="2.500" fill="#fff"/><text x="55" y="55" text-anchor="middle" font-family="ui-monospace,Consolas,monospace" font-weight="700" font-size="20" fill="#ffd75e">&lt;/&gt;</text><line x1="55" y1="0" x2="55" y2="-14" stroke="#fff" stroke-width="4"/><circle cx="55" cy="-18" r="6" fill="#ffd75e"/><text class="k" x="55" y="118">Willi</text><text class="s" x="55" y="138">Webseitenexperte</text><text class="t" x="55" y="156">Erstellt professionelle Webseiten</text></g>
 </svg>

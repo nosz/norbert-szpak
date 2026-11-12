@@ -70,3 +70,17 @@
 @media (max-width: 991.98px) { .kt-ohne { flex-direction: column; align-items: flex-start; } .kt-ohne .kt-btn-anmelden { width: 100%; } }
 .kt-pw-downloads { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
 .kt-pw-downloads a { text-decoration: none; }
+
+/* Agenten: kurze Info zu Aufgabe und Können */
+.kt-agenten-liste { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 20px 0 0; padding: 0; list-style: none; }
+.kt-agenten-liste li { display: flex; flex-direction: column; gap: 6px; padding: 16px; border: 1px solid var(--kt-linie); border-top: 5px solid var(--kt-blau); border-radius: 14px; background: #fff; box-shadow: 0 1px 3px rgba(15,30,61,.06); font-size: .9375rem; line-height: 1.45; color: var(--kt-grau); }
+.kt-agenten-liste li:nth-child(even) { border-top-color: #7a2cff; }
+.kt-agenten-liste li:last-child { border-top-color: #e0245e; }
+.kt-agenten-liste strong { font-size: 1.1875rem; color: var(--kt-navy); }
+.kt-agenten-liste b { color: var(--kt-navy); }
+.kt-ag-rolle { font-size: .8125rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--kt-blau-dunkel); }
+@media (max-width: 1099.98px) { .kt-agenten-liste { grid-template-columns: repeat(2, 1fr); } .kt-agenten-liste li:last-child { grid-column: 1 / -1; } }
+@media (max-width: 575.98px) { .kt-agenten-liste { grid-template-columns: 1fr; } }
+
+.kt-agenten-liste strong { display: flex; align-items: center; gap: 10px; }
+.kt-agenten-liste strong .bi { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 36px; height: 36px; border-radius: 10px; background: var(--kt-hell); color: var(--kt-blau-dunkel); font-size: 1.25rem; }
