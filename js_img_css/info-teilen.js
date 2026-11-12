@@ -2,17 +2,15 @@
    Zusätzlich Kanäle per Link (WhatsApp, E-Mail, LinkedIn): Sie öffnen erst nach Klick den jeweiligen Dienst.
    Teilen-Knöpfe tragen data-teilen (Kopfzeile und Abschnitt am Ende), Kanäle data-kanal, der Kopierknopf hat die ID kopieren-knopf.
    Es wird nichts an Dritte gesendet und nichts gespeichert; geteilt wird immer die öffentliche Adresse der aktuellen Seite
-   (canonical), Titel und Text stammen aus den og-Angaben der Seite. */
+   (Teil 1: info-veranstaltung.html), Titel und Text sind fest hinterlegt. */
 (function () {
-  function meta(name) { var e = document.querySelector('meta[property="' + name + '"]'); return e ? e.content : ""; }
-  var canon = document.querySelector('link[rel="canonical"]');
-  var URL_OEFFENTLICH = canon && canon.href ? canon.href : "https://nosz.github.io/norbert-szpak/info-veranstaltung.html";
+  // Teilen verweist auf allen Seiten immer auf Teil 1 (info-veranstaltung.html), mit dessen Titel und Text
+  var URL_OEFFENTLICH = "https://nosz.github.io/norbert-szpak/info-veranstaltung.html";
   var DATEN = {
-    title: meta("og:title") || "Infoabend Herzintelligenz und KI",
-    text: (meta("og:description") || "Infoabend am Freitag, 27.11.2026, 20.00 Uhr in Heilbronn-Horkheim.") + " Vielleicht interessiert dich das auch:",
+    title: "Glücklich leben. Erfolgreich mit KI. Beides beginnt im Herzen.",
+    text: "Infoabend für Unternehmer und Selbständige am Freitag, 27.11.2026, 20.00 Uhr in Heilbronn-Horkheim, anschließend Business Netzwerk-Treffen. Vielleicht interessiert dich das auch:",
     url: URL_OEFFENTLICH
-  };
-  var T = {
+  };  var T = {
     kopiert: "Der Link wurde kopiert. Du kannst ihn jetzt überall einfügen.",
     geteilt: "Danke fürs Teilen!",
     fehler: "Das Kopieren hat nicht geklappt. Bitte kopiere diese Adresse von Hand: " + URL_OEFFENTLICH
