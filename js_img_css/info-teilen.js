@@ -7,10 +7,25 @@
   // Teilen verweist auf allen Seiten immer auf Teil 1 (info-veranstaltung.html), mit dessen Titel und Text
   var URL_OEFFENTLICH = "https://nosz.github.io/norbert-szpak/info-veranstaltung.html";
   var DATEN = {
-    title: "Glücklich leben. Erfolgreich mit KI. Beides beginnt im Herzen.",
-    text: "Infoabend für Unternehmer und Selbständige am Freitag, 27.11.2026, 20.00 Uhr in Heilbronn-Horkheim, anschließend Business Netzwerk-Treffen. Vielleicht interessiert dich das auch:",
+    title: "Einladung zum Infoabend am 27.11.2026 in Heilbronn-Horkheim",
+    text: "Herzliche Einladung zum Infoabend: Persönlichkeitsentwicklung, Herzintelligenz und neue Techniken wie KI, für alle Interessierten und ohne Vorwissen. Freitag, 27.11.2026, 20.00 Uhr, Wirtshaus zum Reiterhof. Alle Informationen und die Anmeldung findest du hier:",
     url: URL_OEFFENTLICH
-  };  var T = {
+  };
+  // Text für die E-Mail (Zeilenumbrüche als CRLF, damit Outlook den Text übernimmt)
+  var MAIL_TEXT = [
+    "Hallo,",
+    "",
+    "ich möchte dich herzlich zu einem Infoabend einladen: Freitag, 27.11.2026, 20.00 Uhr, Wirtshaus zum Reiterhof in Heilbronn-Horkheim.",
+    "",
+    "Es geht um Herzintelligenz, Persönlichkeitsentwicklung und neue Techniken wie KI. Der Abend ist für alle, die neugierig sind, ohne Vorwissen und nicht nur für Unternehmer und Selbständige. Im zweiten Teil siehst du, wie KI-Agenten und eigene Software entstehen. Alle Teilnehmer erhalten digitale Unterlagen, anschließend ist Zeit für Austausch.",
+    "",
+    "Alle Informationen und die Anmeldung findest du hier:",
+    URL_OEFFENTLICH,
+    "",
+    "Ich würde mich freuen, dich dort zu sehen.",
+    "",
+    "Viele Grüße"
+  ].join("\r\n");  var T = {
     kopiert: "Der Link wurde kopiert. Du kannst ihn jetzt überall einfügen.",
     geteilt: "Danke fürs Teilen!",
     fehler: "Das Kopieren hat nicht geklappt. Bitte kopiere diese Adresse von Hand: " + URL_OEFFENTLICH
@@ -24,7 +39,7 @@
   // Kanäle: Adressen werden erst hier gesetzt, damit Titel und Link zur Seite passen
   var kanaele = {
     whatsapp: "https://wa.me/?text=" + encodeURIComponent(DATEN.title + "\n" + DATEN.text + "\n" + DATEN.url),
-    mail: "mailto:?subject=" + encodeURIComponent(DATEN.title) + "&body=" + encodeURIComponent(DATEN.text + "\n\n" + DATEN.url),
+    mail: "mailto:?subject=" + encodeURIComponent(DATEN.title) + "&body=" + encodeURIComponent(MAIL_TEXT),
     linkedin: "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(DATEN.url)
   };
   Array.prototype.forEach.call(document.querySelectorAll("[data-kanal]"), function (a) {
@@ -64,17 +79,26 @@
     }
   }
 
+  // Teilen-Menü des Geräts nur auf dem Handy: Das Windows-Teilen-Menü gibt Text und Link an Outlook oft nicht weiter
+  // (leere E-Mail). Am Computer führt der Knopf deshalb zu den Kanälen (E-Mail, WhatsApp, LinkedIn, Link kopieren).
+  function istHandy() { return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.mobile === true); }
+  function zuKanaelen() {
+    var ziel = document.getElementById("teilen");
+    if (ziel) {
+      ziel.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+      melde("Wähle hier E-Mail, WhatsApp, LinkedIn oder kopiere den Link.", "kt-ok");
+    } else { kopiere(); }
+  }
   function teile() {
-    if (navigator.share) {
+    if (navigator.share && istHandy()) {
       navigator.share(DATEN).then(function () { melde(T.geteilt, "kt-ok"); }, function (e) {
         // Abbruch durch die Person ist kein Fehler
         if (!e || e.name !== "AbortError") kopiere();
       });
     } else {
-      kopiere();
+      zuKanaelen();
     }
   }
-
   Array.prototype.forEach.call(teilen, function (k) { k.addEventListener("click", teile); });
   if (kopieren) kopieren.addEventListener("click", kopiere);
 })();
