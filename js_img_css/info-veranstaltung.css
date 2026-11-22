@@ -1,4 +1,4 @@
-﻿/* Infoabend: Ergänzungen zu custom.css (Herz-Symbol im Wort, Zeitangabe der Programmpunkte). */
+/* Infoabend: Ergänzungen zu custom.css (Herz-Symbol im Wort, Zeitangabe der Programmpunkte). */
 .kt-herz { margin: 0 .1em; color: #d90429; font-size: .9em; vertical-align: -.05em; }
 .kt-zeit { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: .9375rem; font-weight: 600; color: var(--kt-blau-dunkel); }
 .kt-hero-facts a.kt-hero-link { color: #fff; }
@@ -127,7 +127,7 @@ i.bi-heart, i.bi-heart-fill, i.bi-heart-pulse, i.bi-person-heart { color: #d9042
 .kt-brand img.kt-logo { flex: none; width: 44px; height: 44px; }
 @media (max-width: 575.98px) { .kt-brand img.kt-logo { width: 38px; height: 38px; } }
 
-/* Men� auf Handy und Tablet: Textlinks sind dort ausgeblendet, deshalb Men�-Knopf mit Ausklapp-Liste (ohne JavaScript nutzbar) */
+/* Menü auf Handy und Tablet: Textlinks sind dort ausgeblendet, deshalb Menü-Knopf mit Ausklapp-Liste (ohne JavaScript nutzbar) */
 .kt-menue { display: none; }
 @media (max-width: 1099.98px) {
   .kt-menue { display: block; }
