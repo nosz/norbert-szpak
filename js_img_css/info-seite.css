@@ -281,3 +281,9 @@ a.kt-kanal-mail .bi { color: var(--kt-blau-dunkel); }
 @media (max-width: 575.98px) { .kt-zert-vorteile li { flex: 1 1 100%; } }
 .kt-h2 > span { min-width: 0; overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; }
 .kt-hero-facts a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Sehr schmale Handys (320-340 px), Version 2.11.2 ---------- */
+.kt-footer-links { flex-wrap: wrap; gap: 0 20px; }
+.kt-ziel { min-width: 0; overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; }
+@media (max-width: 991.98px) { .kt-wichtig.kt-wichtig-3 { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 767.98px) { .kt-wichtig { grid-template-columns: minmax(0, 1fr); } }
