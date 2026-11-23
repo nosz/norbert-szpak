@@ -265,3 +265,33 @@ a.kt-kanal-mail .bi { color: var(--kt-blau-dunkel); }
 .kt-neugier-liste .bi { flex: none; font-size: 1.75rem; line-height: 1; color: #e0245e; }
 .kt-neugier-schluss { margin: 0; padding-top: 16px; border-top: 1px solid var(--kt-linie); font-size: 1.0625rem; font-weight: 700; color: var(--kt-blau-dunkel); }
 @media (max-width: 575.98px) { .kt-neugier { padding: 20px 18px; } .kt-neugier-liste li { font-size: 1.0625rem; } }
+
+/* ---------- Zwei Teilnahmezertifikate, Version 2.10.0 ---------- */
+.kt-zert .kt-ziel { border-top-color: #e0245e; }
+.kt-zert .kt-ziel:nth-child(2) { border-top-color: var(--kt-blau); }
+.kt-zert .kt-ziel h3 .kt-herz { color: var(--kt-rot); font-size: .7em; vertical-align: .15em; }
+.kt-zert-gruppe { padding: 12px 0; border-top: 1px solid var(--kt-linie); }
+.kt-zert-gruppe:last-child { padding-bottom: 0; }
+.kt-zert-gruppe h4 { margin: 0 0 4px; font-size: 1.0625rem; font-weight: 700; color: var(--kt-navy); }
+.kt-zert-gruppe p { margin: 0; color: var(--kt-grau); }
+.kt-zert-vorteile { display: flex; flex-wrap: wrap; gap: 10px 14px; margin: 20px 0 0; padding: 0; list-style: none; }
+.kt-zert-vorteile li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 16px; border: 1px solid var(--kt-linie); border-radius: 12px; background: #fff; font-weight: 600; color: var(--kt-navy); line-height: 1.4; }
+.kt-zert-vorteile .bi { flex: none; font-size: 1.25rem; color: var(--kt-blau); }
+.kt-zert-vorteile .bi-heart-pulse { color: #e0245e; }
+@media (max-width: 575.98px) { .kt-zert-vorteile li { flex: 1 1 100%; } }
+.kt-hero-facts a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Prüfseite Zertifikat, Version 2.10.0 ---------- */
+.kt-pruef-form { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.kt-pruef-form > div { flex: 1 1 260px; }
+.kt-pruef-form .kt-input { text-transform: uppercase; letter-spacing: .06em; }
+.kt-pruef-ergebnis { margin-top: 20px; }
+.kt-pruef-ok { border: 2px solid var(--kt-ok); background: linear-gradient(135deg, #effaf2 0%, #fff 70%); }
+.kt-pruef-fehler { border: 2px solid var(--kt-fehler); background: #fff5f4; }
+.kt-pruef-ok h3, .kt-pruef-fehler h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font-size: 1.375rem; font-weight: 700; }
+.kt-pruef-ok h3 .bi { color: var(--kt-ok); }
+.kt-pruef-fehler h3 .bi { color: var(--kt-fehler); }
+.kt-pruef-daten { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin: 0; }
+.kt-pruef-daten dt { font-weight: 600; color: var(--kt-grau); }
+.kt-pruef-daten dd { margin: 0; font-weight: 700; color: var(--kt-navy); overflow-wrap: anywhere; }
+@media (max-width: 479.98px) { .kt-pruef-daten { grid-template-columns: 1fr; gap: 2px; } .kt-pruef-daten dd { margin-bottom: 10px; } }

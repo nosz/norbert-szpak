@@ -8,7 +8,7 @@
   var URL_OEFFENTLICH = "https://nosz.github.io/norbert-szpak/info-veranstaltung.html";
   var DATEN = {
     title: "Einladung zum Infoabend am 27.11.2026 in Heilbronn-Horkheim",
-    text: "KI wird zum Standard. Dein Vorsprung ist Herzintelligenz. Infoabend für Führungskräfte, Unternehmer, IT-Verantwortliche und alle, die offen für neue Techniken sind: Wie du im KI-Zeitalter führst, besser entscheidest und neue Berufschancen früh erkennst. Freitag, 27.11.2026, 20.00 Uhr, 90 Minuten live im Wirtshaus zum Reiterhof, danach Business Netzwerk-Treffen. Alle Informationen und die Anmeldung findest du hier:",
+    text: "KI wird zum Standard. Dein Vorsprung ist Herzintelligenz. Infoabend für Führungskräfte, Unternehmer, IT-Verantwortliche und alle mit Interesse an neuen Techniken und Persönlichkeitsentwicklung: Wie du im KI-Zeitalter führst, besser entscheidest und neue Berufschancen früh erkennst. Freitag, 27.11.2026, 20.00 Uhr, 90 Minuten live im Wirtshaus zum Reiterhof, danach Business Netzwerk-Treffen. Alle Informationen und die Anmeldung findest du hier:",
     url: URL_OEFFENTLICH
   };
   // Text für die E-Mail (Zeilenumbrüche als CRLF, damit Outlook den Text übernimmt)
@@ -17,7 +17,7 @@
     "",
     "ich möchte dich herzlich zu einem Infoabend einladen: Freitag, 27.11.2026, 20.00 Uhr, Wirtshaus zum Reiterhof in Heilbronn-Horkheim.",
     "",
-    "KI wird zum Standard, den Unterschied machen Menschen: Klarheit, Urteilskraft und Empathie werden zum Wettbewerbsvorteil. Gleichzeitig entstehen ganz neue Berufsmöglichkeiten. Der Abend richtet sich an Führungskräfte, Unternehmer und IT-Verantwortliche, aber auch an alle, die offen für neue Techniken sind, ohne Vorwissen. Im zweiten Teil siehst du, wie KI-Agenten und eigene Software entstehen. Alle Teilnehmer erhalten digitale Unterlagen, danach folgt das Business Netzwerk-Treffen.",
+    "KI wird zum Standard, den Unterschied machen Menschen: Klarheit, Urteilskraft und Empathie werden zum Wettbewerbsvorteil. Gleichzeitig entstehen ganz neue Berufsmöglichkeiten. Der Abend richtet sich an Führungskräfte, Unternehmer und IT-Verantwortliche, aber auch an alle, die sich für neue Techniken und Persönlichkeitsentwicklung interessieren, ohne Vorwissen. Im zweiten Teil siehst du, wie KI-Agenten entstehen und wie als Praxisbeispiel eine professionelle Webseite gebaut und mit GitHub online gestellt wird. Alle Teilnehmer erhalten digitale Unterlagen, danach folgt das Business Netzwerk-Treffen.",
     "",
     "Alle Informationen und die Anmeldung findest du hier:",
     URL_OEFFENTLICH,
