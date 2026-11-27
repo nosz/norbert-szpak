@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="app-version" content="2.14.0">
+<meta name="app-version" content="2.15.0">
 <meta name="theme-color" content="#0f1e3d">
-<meta name="description" content="Teil 2 des Infoabends am 27.11.2026: Prompt, Skill, MCP, Agent und Loop einfach erklärt, eigene KI-Agenten erstellen, als Praxisbeispiel eine professionelle Webseite bauen und mit GitHub online stellen.">
+<meta name="description" content="Teil 2 des Infoabends am 27.11.2026: Prompt, Skill, MCP, Agent und Loop einfach erklärt, eigene KI-Agenten erstellen, als Praxisbeispiel eine professionelle Webseite bauen und mit GitHub online stellen. Gezeigt mit Claude, übertragbar auf Codex und andere KI-Werkzeuge.">
 <title>Teil 2: KI-Agenten und eigene Webseite – Infoabend 27.11.2026</title>
 <link rel="canonical" href="https://nosz.github.io/norbert-szpak/info-veranstaltung-teil2.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23d90429' d='M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z'/%3E%3C/svg%3E">
@@ -26,12 +26,12 @@
 <meta name="twitter:description" content="Teil 2 des Infoabends, Freitag 27.11.2026: KI-Agenten erstellen, eine professionelle Webseite bauen und mit GitHub online stellen.">
 <meta name="twitter:image" content="https://nosz.github.io/norbert-szpak/js_img_css/info-vorschau-teil2.jpg?v=4">
 
-<link rel="stylesheet" href="js_img_css/bootstrap.min.css?v=2.14.0">
-<link rel="stylesheet" href="js_img_css/bootstrap-icons.min.css?v=2.14.0">
-<link rel="stylesheet" href="js_img_css/custom.css?v=2.14.0">
-<link rel="stylesheet" href="js_img_css/info-veranstaltung.css?v=2.14.0">
-<link rel="stylesheet" href="js_img_css/info-seite.css?v=2.14.0">
-<link rel="stylesheet" href="js_img_css/inhalte.css?v=2.14.0">
+<link rel="stylesheet" href="js_img_css/bootstrap.min.css?v=2.15.0">
+<link rel="stylesheet" href="js_img_css/bootstrap-icons.min.css?v=2.15.0">
+<link rel="stylesheet" href="js_img_css/custom.css?v=2.15.0">
+<link rel="stylesheet" href="js_img_css/info-veranstaltung.css?v=2.15.0">
+<link rel="stylesheet" href="js_img_css/info-seite.css?v=2.15.0">
+<link rel="stylesheet" href="js_img_css/inhalte.css?v=2.15.0">
 </head>
 <body>
 <a class="kt-skip" href="#inhalt">Zum Inhalt springen</a>
@@ -105,6 +105,18 @@
     </div>
     <a class="kt-btn kt-btn-anmelden" href="info-veranstaltung.html#anmeldung-bereich"><span>Jetzt anmelden</span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
   </aside>
+  <section id="werkzeuge" aria-labelledby="h-werkzeuge">
+    <p class="kt-eyebrow">Gezeigt mit Claude, gültig für alle</p>
+    <h2 id="h-werkzeuge" class="kt-h2"><i class="bi bi-stars" aria-hidden="true"></i><span>Live mit Claude. Das Prinzip gilt für jedes KI-Werkzeug.</span></h2>
+    <p class="kt-lead">Alle Beispiele des Abends werden live mit <strong>Claude von Anthropic</strong> gezeigt, über claude.ai und Claude Code. Du lernst dabei aber kein einzelnes Produkt, sondern ein <strong>Prinzip</strong>: Prompt, Skill, MCP, Agent und Loop findest du in ähnlicher Form auch bei <strong>OpenAI Codex</strong> und ChatGPT, bei Google Gemini, GitHub Copilot und anderen KI-Werkzeugen.</p>
+    <div class="kt-tipps kt-ki-schritte">
+      <article class="kt-tipp"><h3>Gezeigt mit Claude</h3><p>Live-Beispiele, Prompts und Vorlagen des Abends sind mit Claude erstellt, über claude.ai im Browser und Claude Code am Rechner.</p></article>
+      <article class="kt-tipp"><h3>Gilt auch für Codex und Co.</h3><p>Klare Aufträge, wiederverwendbare Anleitungen, Anschlüsse an deine Werkzeuge und Agenten mit Rolle und Regeln: Das funktioniert mit jedem modernen KI-Werkzeug. MCP ist ein offener Standard, den viele Anbieter unterstützen.</p></article>
+      <article class="kt-tipp"><h3>Was sich unterscheidet</h3><p>Namen, Menüs, Befehle und Speicherorte. Wie ein Baustein bei deinem Werkzeug heißt und wo er liegt, steht in dessen offizieller Dokumentation.</p></article>
+    </div>
+    <p class="kt-fazit"><i class="bi bi-lightbulb-fill" aria-hidden="true"></i><span>Einmal verstanden, überall anwendbar: Du bist nicht an einen Anbieter gebunden.</span></p>
+  </section>
+
   <section id="begriffe" aria-labelledby="h-begriffe">
     <p class="kt-eyebrow">Das Vokabular</p>
     <h2 id="h-begriffe" class="kt-h2"><i class="bi bi-book" aria-hidden="true"></i><span>Prompt, Skill, MCP, Agent, Loop: einfach erklärt</span></h2>
@@ -211,6 +223,7 @@
         <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Fahrplan: deine Webseite Schritt für Schritt</span></li>
         <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Checkliste für professionelle Webseiten</span></li>
         <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Anleitung: Webseite mit GitHub online stellen</span></li>
+        <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Übertragen auf Codex und andere KI-Werkzeuge</span></li>
         <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Als interaktive HTML-Datei und als PDF</span></li>
       </ul>
       <button class="kt-btn-unterlagen-gross" id="unterlagen-knopf" type="button" aria-expanded="false" aria-controls="pw-box"><i class="bi bi-file-earmark-lock2" aria-hidden="true"></i><span>Teilnehmer-Unterlagen</span></button>
@@ -295,7 +308,7 @@
   <div class="kt-wrap">
     <span>&copy; 2026 Norbert Szpak</span>
     <span class="kt-footer-links"><a href="info-veranstaltung.html">Teil 1</a><a href="info-veranstaltung.html#anmeldung-bereich">Anmeldung</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></span>
-    <span>Version <span data-app-version>2.14.0</span></span>
+    <span>Version <span data-app-version>2.15.0</span></span>
   </div>
 </footer>
 <div class="kt-sticky" id="sticky-anmelden">
@@ -303,8 +316,8 @@
   <a class="kt-btn kt-btn-anmelden" href="info-veranstaltung.html#anmeldung-bereich"><span>Jetzt anmelden</span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
 </div>
 <div class="kt-toast" id="teilen-toast" role="status" aria-live="polite"></div>
-<script src="js_img_css/info-teilen.js?v=2.14.0"></script>
-<script src="js_img_css/info-seite.js?v=2.14.0"></script>
-<script src="js_img_css/inhalte.js?v=2.14.0"></script>
+<script src="js_img_css/info-teilen.js?v=2.15.0"></script>
+<script src="js_img_css/info-seite.js?v=2.15.0"></script>
+<script src="js_img_css/inhalte.js?v=2.15.0"></script>
 </body>
 </html>
