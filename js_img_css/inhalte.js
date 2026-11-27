@@ -17,6 +17,18 @@
 
   var fehlversuche = 0, gesperrtBis = 0;
 
+  // Auge-Knopf: Passwort anzeigen oder verbergen
+  var auge = document.getElementById("pw-auge");
+  function setzeSichtbar(sichtbar) {
+    if (!auge) return;
+    eingabe.type = sichtbar ? "text" : "password";
+    auge.setAttribute("aria-pressed", sichtbar ? "true" : "false");
+    var text = sichtbar ? "Passwort verbergen" : "Passwort anzeigen";
+    auge.setAttribute("aria-label", text); auge.title = text;
+    auge.firstElementChild.className = "bi " + (sichtbar ? "bi-eye-slash" : "bi-eye");
+  }
+  if (auge) auge.addEventListener("click", function () { setzeSichtbar(eingabe.type === "password"); eingabe.focus(); });
+
   function zeige(text, klasse) { status.textContent = text; status.className = "kt-pw-status " + (klasse || ""); }
   function oeffne() {
     feld.hidden = false;
@@ -64,7 +76,7 @@
     senden.disabled = true; zeige("Prüfe das Passwort ...", "");
     try {
       var erg = await entschluesseln(pw);
-      fehlversuche = 0; eingabe.value = "";
+      fehlversuche = 0; eingabe.value = ""; setzeSichtbar(false);
       links.textContent = "";
       var h = bereitstellen(erg, AUSGABENAME, "Interaktive Unterlagen (HTML) laden", "bi-file-earmark-code");
       try { var p = await entschluesseln(pw, DATEI_PDF); bereitstellen(p, NAME_PDF, "Als PDF laden", "bi-file-earmark-pdf"); } catch (e2) {}
